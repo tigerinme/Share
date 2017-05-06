@@ -1,0 +1,22 @@
+.wrap{
+    border: dashed;
+    margin: 10px 300px;
+    /*float: left;*/
+    color: rebeccapurple;
+    background:red;
+}
+.content{
+    float: left;
+    border:dotted;
+    width: 75%;
+    height: 500px;
+    margin-right:5px;
+}
+.sidebar{
+    float: left;
+    /*width: 23%;*/
+    height: 500px;
+    /*margin-right: 0px;*/
+    margin-left:5px;
+    border: double;
+}

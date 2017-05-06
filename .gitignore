@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+/.idea/
+/back/back.iml
+/back/target/
+/cache/cache.iml
+/front/target/
+/front/front.iml
+/spider/spider.iml
+/Share.iml

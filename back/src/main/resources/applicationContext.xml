@@ -1,0 +1,74 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.2.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-4.2.xsd"
+    default-lazy-init="true">
+
+    <context:component-scan base-package="com.send.back.service"/>
+
+
+
+    <!-- spring 2.5之后，读取外部配置文件-->
+    <context:property-placeholder location="classpath*:/jdbc.properties"></context:property-placeholder>
+
+    <!-- 1. 数据源  -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+
+    <!-- mybatis和spring完美整合，不需要mybatis的配置映射文件 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 自动扫描mapping.xml文件,省去configuration.xml手工配置 -->
+        <!--<property name="mapperLocations" value="classpath*:com/send/back/mapper/*.xml"></property>-->
+    </bean>
+
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.send.back.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+
+    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+    <!-- 配置不过滤的资源（静态资源及登录相关） -->
+    <!--<security:http pattern="/**/*.css" security="none"></security:http>-->
+
+
+    <security:http auto-config="true">
+        <security:intercept-url pattern="/admin.jsp" access="hasRole('ROLE_USER')"/>
+        <security:intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')"/>
+        <!--<security:form-login login-page="/login.jsp" authentication-failure-url="/login.jsp"-->
+                             <!--default-target-url="/index.jsp"/>-->
+    </security:http>
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service >
+                <security:user name="admin" password="admin" authorities="ROLE_ADMIN"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+
+
+
+</beans>
