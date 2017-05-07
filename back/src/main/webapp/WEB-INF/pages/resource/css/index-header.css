@@ -1,15 +1,83 @@
-.header-iframe{
-    width:100%;
-    height:61px;
+.header-iframe {
+    width: 100%;
+    height: 61px;
 
 }
-.index-header{
-    /*background: red;*/
-    /*color: red;*/
+
+.index-header {
     height: 60px;
     border-bottom: 1px solid gainsboro;
 }
+
 body {
     margin: 0px;
-   padding: 0px;
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.index-header .logo {
+    float: left;
+    margin-top: 10px;
+    margin-left: 60px;
+}
+.index-header .discover{
+    float: left;
+    float: left;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+.index-header .discover a span.name {
+    font-size: 20px;
+}
+
+.index-header .search {
+    float: left;
+}
+
+.index-header .search .search-input {
+    margin-top: 10px;
+    height: 35px;
+    margin-left: 200px;
+    width: 200px;
+    border-radius: 15px;
+    border: 0;
+    outline: none;
+    background: #eee;
+    border: none;
+    font-size: 16px;
+    font-family: Helvetica, Tahoma, Arial;
+    color: grey;
+    padding-left: 15px;
+}
+
+.index-header .search .search-button {
+    border-radius: 15px;
+    width: 60px;
+    height: 40px;
+}
+
+.index-header .logo a span.name {
+    font-size: 30px;
+}
+
+.index-header .userlogin {
+    float: right;
+    /*margin-top: 10px;*/
+    /*margin-left: 10px;*/
+    margin-right: 100px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.index-header .share {
+    float: right;
+    margin-top: 20px;
+    margin-right: 25px;
+}
+
+.index-header .share a span.name {
+    font-size: 20px;
 }
