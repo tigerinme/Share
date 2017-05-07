@@ -1,0 +1,89 @@
+.sign{
+    height: 100%;
+    min-height: 610px;
+    text-align: center;
+    font-size: 14px;
+    background-color: #f1f1f1;
+}
+body{
+    margin: 0px;
+    padding:0px;
+}
+.sign .main{
+    width: 300px;
+    margin: 60px auto 0;
+    padding: 50px 50px 30px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0,0,0,.1);
+    vertical-align: middle;
+    display: inline-block;
+}
+.sign .main .title{
+    margin: 0 auto 50px;
+    padding: 10px;
+    font-weight: 400;
+    color: #969696;
+}
+.sign .title .active{
+    font-weight: 700;
+    color: #ea6f5a;
+    border-bottom: 2px solid #ea6f5a;
+}
+.sign .title a{
+    text-decoration: none;
+    font-size: 25px;
+}
+.input-prepend input{
+    width: 80%;
+    height: 40px;
+    margin-bottom: 0;
+    padding: 4px 12px 4px 35px;
+    border: 1px solid #c8c8c8;
+    border-radius: 0 0 4px 4px;
+    background-color: hsla(0,0%,71%,.1);
+    vertical-align: middle;
+}
+.sign .remember-btn{
+    float: left;
+    margin: 15px 0;
+}
+.sign .forget-pwd{
+    float: right;
+    position: relative;
+    margin: 15px 0;
+    font-size: 14px;
+}
+.sign .forget-pwd a{
+    text-decoration: none;
+}
+.sign .sign-in-button{
+    width: 100%;
+    padding: 9px 18px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background: #3194d0;
+    cursor: pointer;
+    outline: none;
+    /*display: block;*/
+    clear: both;
+}
+.js-sign-up-container{
+    display: none;
+}
+.sign-up-button{
+    width: 100%;
+    padding: 9px 18px;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    background: #42c02e;
+    cursor: pointer;
+    outline: none;
+    display: block;
+    clear: both;
+    margin-top: 10px;
+}

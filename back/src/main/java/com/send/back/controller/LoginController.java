@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("user")
 public class LoginController {
 
+
+
     @RequestMapping("login")
     public String login(){
         System.out.println("login");
@@ -18,4 +20,6 @@ public class LoginController {
         System.out.println("register");
         return "user/login";
     }
+
+
 }
