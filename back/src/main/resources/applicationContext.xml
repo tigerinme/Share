@@ -54,19 +54,19 @@
     <!--<security:http pattern="/**/*.css" security="none"></security:http>-->
 
 
-    <security:http auto-config="true">
-        <security:intercept-url pattern="/admin.jsp" access="hasRole('ROLE_USER')"/>
-        <security:intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')"/>
-        <!--<security:form-login login-page="/login.jsp" authentication-failure-url="/login.jsp"-->
-                             <!--default-target-url="/index.jsp"/>-->
-    </security:http>
-    <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service >
-                <security:user name="admin" password="admin" authorities="ROLE_ADMIN"/>
-            </security:user-service>
-        </security:authentication-provider>
-    </security:authentication-manager>
+    <!--<security:http auto-config="true">-->
+        <!--<security:intercept-url pattern="/admin.jsp" access="hasRole('ROLE_USER')"/>-->
+        <!--<security:intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')"/>-->
+        <!--&lt;!&ndash;<security:form-login login-page="/login.jsp" authentication-failure-url="/login.jsp"&ndash;&gt;-->
+                             <!--&lt;!&ndash;default-target-url="/index.jsp"/>&ndash;&gt;-->
+    <!--</security:http>-->
+    <!--<security:authentication-manager>-->
+        <!--<security:authentication-provider>-->
+            <!--<security:user-service >-->
+                <!--<security:user name="admin" password="admin" authorities="ROLE_ADMIN"/>-->
+            <!--</security:user-service>-->
+        <!--</security:authentication-provider>-->
+    <!--</security:authentication-manager>-->
 
 
 

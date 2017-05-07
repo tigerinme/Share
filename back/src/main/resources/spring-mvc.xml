@@ -17,9 +17,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
     <!-- 配置静态资源 图片、js、css、html、插件 -->
     <mvc:resources mapping="/template/**" location="/WEB-INF/pages/template/" />
-    <mvc:resources mapping="/resource/css/**" location="/WEB-INF/resource/css/" />
-    <mvc:resources mapping="/resource/js/**" location="/WEB-INF/resource/js/" />
-    <mvc:resources mapping="/resource/img/**" location="/WEB-INF/resource/img/" />
+    <mvc:resources mapping="/resource/css/**" location="/WEB-INF/pages/resource/css/" />
+    <mvc:resources mapping="/resource/js/**" location="/WEB-INF/pages/resource/js/" />
+    <mvc:resources mapping="/resource/img/**" location="/WEB-INF/pages/resource/img/" />
 
 
     <!--对模型视图名称的解析，即在模型视图名称添加前后缀 /WEB-INF/xxx/XXX.html&ndash;&gt;-->

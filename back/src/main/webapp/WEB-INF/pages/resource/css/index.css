@@ -1,22 +1,20 @@
 .wrap{
-    border: dashed;
-    margin: 10px 300px;
-    /*float: left;*/
+    margin: 10px 250px;
     color: rebeccapurple;
+    min-width: 500px;
     background:red;
 }
 .content{
     float: left;
-    border:dotted;
+    border:1px solid gainsboro;
     width: 75%;
-    height: 500px;
+    min-height: 425px;
     margin-right:5px;
 }
 .sidebar{
     float: left;
-    /*width: 23%;*/
-    height: 500px;
-    /*margin-right: 0px;*/
+    width: 20%;
+    min-height: 425px;
     margin-left:5px;
-    border: double;
+    border: 1px solid gainsboro;
 }

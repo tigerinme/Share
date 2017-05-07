@@ -16,7 +16,7 @@ public class FileUtils {
     private static Random random = new Random();
 
     public static String generateFilePath() {
-        return  "D:/Share/pictures/"+ (random.nextInt(3000) + 1) + File.separator;
+        return  "D:/share/pictures/"+ (random.nextInt(3000) + 1) + File.separator;
     }
 
     public static String generateFileName(Integer keyPrefix, String key) {
