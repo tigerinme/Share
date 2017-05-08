@@ -4,11 +4,12 @@ import com.send.back.domain.response.Result;
 import com.send.back.domain.response.Success;
 import com.send.back.domain.user.SessionUser;
 import com.send.back.domain.user.UserLogin;
-import com.send.back.service.impl.UserService;
+import com.send.back.service.inter.UserService;
 import com.send.back.utils.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +30,12 @@ public class LoginController extends  BaseController{
     private UserService userService;
 
 
+
+    @RequestMapping("goToLogin")
+    public String goToLogin(){
+        return "user/login";
+    }
+
     /**
      * 功能描述：用户登录处理
      *
@@ -38,7 +45,6 @@ public class LoginController extends  BaseController{
      * @param username   用户名
      * @param password   密码
      * @param rememberMe 记住我
-     * @param checkCode  校验码
      * @return
      * @author 董森
      * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
@@ -46,8 +52,12 @@ public class LoginController extends  BaseController{
      */
     @ResponseBody
     @RequestMapping("login")
-    public Result login(HttpSession session, HttpServletRequest request, HttpServletResponse
-            response, String username, String password, String rememberMe, String checkCode) {
+    public Result login(HttpSession session,
+                        HttpServletRequest request,
+                        HttpServletResponse response,
+                        String username,
+                        String password,
+                        String rememberMe) {
 
         final String REMEMBER_ME = "1";
         String jsessionId = session.getId();
@@ -104,14 +114,14 @@ public class LoginController extends  BaseController{
     @RequestMapping("register")
     public Result register(HttpSession session,
                        HttpServletRequest request,
-                       String userName,
+                       String username,
                        String email,
                        String password) {
         //获取用户Ip地址
         String ip = this.getIpAddr(request);
         UserLogin userLogin = new UserLogin();
         userLogin.setLastLoginIp(ip);
-        userLogin.setUsername(userName);
+        userLogin.setUsername(username);
         userLogin.setPassword(password);
         userLogin.setEmail(email);
         //注册用户

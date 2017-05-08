@@ -1,16 +1,17 @@
-package com.send.back.service.real;
+package com.send.back.service.impl;
 
 import com.send.back.dao.UserMapper;
 import com.send.back.domain.response.Failed;
 import com.send.back.domain.response.Result;
 import com.send.back.domain.response.Success;
 import com.send.back.domain.user.UserLogin;
-import com.send.back.service.impl.UserService;
+import com.send.back.service.inter.UserService;
 import com.send.back.utils.Constants;
 import com.send.back.utils.Md5Util;
 import com.send.back.utils.StringTools;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
@@ -21,23 +22,25 @@ import org.springframework.stereotype.Service;
 * @since 2017/5/8
 * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
 */
+
 @Service("userService")
+@PropertySource(value = "classpath:system.properties")
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
-    //读取属性配置文件
+
     @Autowired
     private Environment env;
 
-    private String md5key = env.getProperty("md5key");
+
 
     @Override
     public Result register(UserLogin userLogin) {
         String userName = userLogin.getUsername();
         String email = userLogin.getEmail();
         String password = userLogin.getPassword();
-
+        String md5key = env.getProperty("md5key");
         if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(email) || StringUtils.isEmpty(password) || userName.length() > Constants
                 .LENGTH_20 || password.length() > Constants.LENGTH_16 || password.length() < Constants.LENGTH_6 || !StringTools.checkEmail
                 (email) || !StringTools.checkUserName(userName) || !StringTools.checkPassWord(password)) {
@@ -64,6 +67,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Result login(String username, String password, String ip) {
+        String md5key = env.getProperty("md5key");
         if(StringUtils.isEmpty(username) || StringUtils.isEmpty(password)){
          return new Failed("用户名或者密码参数错误");
         }

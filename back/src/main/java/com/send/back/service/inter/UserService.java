@@ -1,15 +1,11 @@
-package com.send.back.service.impl;
+package com.send.back.service.inter;
 
 
 
 import com.send.back.domain.response.Result;
 import com.send.back.domain.user.UserLogin;
-import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.xml.registry.infomodel.User;
 
-@Service("userServiceImpl")
 public interface UserService {
     /**
      * 功能描述：注册用户
