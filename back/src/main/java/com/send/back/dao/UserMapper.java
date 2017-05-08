@@ -21,7 +21,7 @@ public interface UserMapper {
     @Insert({"insert into user_login(username,email,password,last_login_time,last_login_ip)",
             "values",
 //            "(#{userLogin.getUsername},#{userLogin.getEmail},#{userLogin.getPassword},now(),#{userLogin.getLastLoginIp})"
-            "(#{username},#{email},#{password},#{lastLoginTime},#{lastLoginIp})"
+            "(#{username},#{email},#{password},now(),#{lastLoginIp})"
     })
     void register(UserLogin userLogin);
 
