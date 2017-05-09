@@ -19,18 +19,12 @@
         </h4>
         <!--登陆-->
         <div class="js-sign-in-container" >
-
-
-                <!-- 正常登录登录名输入框 -->
                 <div class="input-prepend restyle js-normal">
                     <input placeholder="用户名" type="text" name="username" id="login_username">
-
                 </div>
                 <div class="input-prepend">
                     <input placeholder="密码" type="password" name="password" id="login_password">
-
                 </div>
-
                 <div class="remember-btn">
                     <input type="checkbox" value="true" checked="checked" name="remember_me"
                            id="session_remember_me"><span>记住我</span>
@@ -38,14 +32,10 @@
                 <div class="forget-pwd">
                     <a class="" href="">忘记密码？</a>
                 </div>
-                <input type="submit" name="commit" value="登录" class="sign-in-button">
-            </form>
-
+                <input type="submit" name="commit" value="登录" class="sign-in-button" id="signInButton">
         </div>
        <!--注册-->
         <div class="js-sign-up-container">
-            <form class="new_user" id="new_user" action="/back/user/register" accept-charset="UTF-8" method="post">
-
                 <div class="input-prepend restyle">
                     <input placeholder="用户名" type="text" value="" name="username" id="user_username">
                 </div>
@@ -55,9 +45,7 @@
                 <div class="input-prepend">
                     <input placeholder="密码" type="password" name="password" id="user_password">
                 </div>
-                <input type="submit" name="commit" value="注册" class="sign-up-button">
-            </form>
-
+                <input type="submit" name="commit" value="注册" class="sign-up-button" id="signUpButton">
         </div>
     </div>
 </div>

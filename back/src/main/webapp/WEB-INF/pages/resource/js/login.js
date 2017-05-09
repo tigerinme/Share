@@ -16,7 +16,7 @@ $(document).ready(function() {
     });
     // 设置为屏幕宽度
     $(document).ready(function(){
-        var w = document.documentElement.scrollWidth;
-        $("#sign").style.scrollHeight = w + "px";
+        var w = document.documentElement.clientHeight;
+        $("#sign").css("minHeight",w+"px")
     });
 });

@@ -5,6 +5,8 @@
     float: right;
     margin-top: 10px;
     margin-bottom: 0px;
+    position:fixed;
+    bottom:0;
 }
 .index-footer{
     height: 100px;
