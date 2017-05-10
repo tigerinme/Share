@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <script type="application/javascript" src="../resource/js/jquery-3.2.1.js"></script>
-    <script type="application/javascript" src="../resource/js/bootstrap.min.js"></script>
-    <script type="application/javascript" src="../resource/js/bootstrapValidator.min.js"></script>
-    <script type="application/javascript" src="../resource/js/login.js"></script>
-    <link rel="stylesheet" href="../resource/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../resource/css/login.css">
-    <link rel="stylesheet" href="../resource/css/bootstrapValidator.min.css">
+    <script type="application/javascript" src="../res/js/jquery-3.2.1.js"></script>
+    <script type="application/javascript" src="../res/js/bootstrap.min.js"></script>
+    <script type="application/javascript" src="../res/js/bootstrapValidator.min.js"></script>
+    <script type="application/javascript" src="../res/js/login.js"></script>
+    <link rel="stylesheet" href="../res/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../res/css/login.css">
+    <link rel="stylesheet" href="../res/css/bootstrapValidator.min.css">
 
 </head>
 <body>
@@ -25,50 +25,52 @@
         </h4>
         <!--登陆-->
         <div class="js-sign-in-container">
-            <form id="loginForm" method="post" class="form-horizontal">
+            <form id="loginForm" class="form-horizontal">
+
                 <div class="form-group">
                     <div class="input-prepend restyle js-normal">
-                        <input placeholder="用户名" type="text" name="username" id="login_username" class="login-username">
-                    </div>
-                </div>
-                <div class="input-prepend">
-                    <div class="form-group">
-                        <input placeholder="密码" type="password" name="password" id="login_password" class="login-password">
+                        <input placeholder="用户名" type="text" name="login_username" id="login_username"
+                               class="login-username">
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="remember-btn">
-                        <input type="checkbox" value="true" checked="checked" name="remember_me"
-                               id="session_remember_me"><span>记住我</span>
-                    </div>
-                    <div class="forget-pwd">
-                        <a class="" href="">忘记密码？</a>
+                    <div class="input-prepend restyle js-normal">
+                        <input placeholder="密码" type="text" name="login_password" id="login_password" class="login-password">
                     </div>
                 </div>
+                <div class="remember-btn">
+                    <input type="checkbox" value="true" checked="checked" name="remember_me"
+                           id="session_remember_me"><span>记住我</span>
+                </div>
+                <div class="forget-pwd">
+                    <a class="" href="">忘记密码？</a>
+                </div>
 
-                <input type="submit" name="commit" value="登录" class="sign-in-button" id="signInButton">
+                <input type="submit" name="signInButton" value="登陆" class="sign-in-button" id="signInButton"></input>
             </form>
         </div>
 
         <!--注册-->
         <div class="js-sign-up-container">
-            <form id="registerForm" method="post" class="form-horizontal">
-                <div class="form-group">
-                    <div class="input-prepend restyle">
-                        <input placeholder="用户名" type="text" value="" name="username" id="user_username">
-                    </div>
-                </div>
+            <form id="registerForm" class="form-horizontal">
+
                 <div class="form-group">
                     <div class="input-prepend restyle no-radius js-normal">
-                        <input placeholder="邮箱" type="text" name="email" id="user_email">
+                        <input placeholder="用户名" type="text" name="register_username" id="register_username">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-prepend restyle no-radius js-normal">
+                        <input placeholder="邮箱" type="text" name="register_email" id="register_email">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-prepend">
-                        <input placeholder="密码" type="password" name="password" id="user_password">
+                        <input placeholder="密码" type="password" name="register_password" id="register_password">
                     </div>
                 </div>
-                <input type="submit" name="commit" value="注册" class="sign-up-button" id="signUpButton">
+                <input type="submit" name="signUpButton" value="注册" class="sign-up-button" id="signUpButton"></input>
             </form>
         </div>
     </div>

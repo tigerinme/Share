@@ -1,5 +1,6 @@
 package com.send.back.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.send.back.domain.response.Result;
 import com.send.back.domain.response.Success;
 import com.send.back.domain.user.SessionUser;
@@ -137,4 +138,47 @@ public class LoginController extends  BaseController{
         }
         return new Success();
     }
+
+
+    /**
+    * 功能描述： 校验用户姓名是否存在
+    * @param
+    * @return
+    * @author 董森
+    * @since 2017/5/10
+    * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
+    */
+    @ResponseBody
+    @RequestMapping("checkUsername")
+    public String checkUsername(String register_username){
+        System.out.println(register_username);
+        JSONObject jsonObject = new JSONObject();
+     if(userService.findUserByUserName(register_username)!= null){
+         jsonObject.put("valid",false);
+     }else{
+         jsonObject.put("valid",true);
+     }
+     return jsonObject.toJSONString();
+    }
+
+    /**
+     * 功能描述： 校验用户邮箱是否存在
+     * @param
+     * @return
+     * @author 董森
+     * @since 2017/5/10
+     * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
+     */
+    @ResponseBody
+    @RequestMapping("checkEmail")
+    public String checkEmail(String register_email){
+        JSONObject jsonObject = new JSONObject();
+        if(userService.findUserByEmail(register_email)!=null){
+            jsonObject.put("valid",false);
+        }else{
+            jsonObject.put("valid",true);
+        }
+        return jsonObject.toJSONString();
+    }
+
 }
