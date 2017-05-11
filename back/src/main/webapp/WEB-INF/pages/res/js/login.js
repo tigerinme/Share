@@ -1,18 +1,23 @@
 $(document).ready(function () {
+
+
     // 登陆点击事件
     $("#js-sign-in-btn").click(function () {
         $("#js-sign-up-btn").removeClass("active");
-        $(".js-sign-up-container").hide(500);
+        $("#js-sign-up-container").removeClass("showRegister");
+        $("#js-sign-up-container").addClass("closeRegister");
         $(this).addClass("active");
-        $(".js-sign-in-container").show(500);
-
+        $("#js-sign-in-container").addClass("showLogin");
+        $("#js-sign-in-container").removeClass("closeLogin");
     });
     // 注册点击事件
     $("#js-sign-up-btn").click(function () {
-        $(".js-sign-in-container").hide(500);
         $("#js-sign-in-btn").removeClass("active");
+        $("#js-sign-in-container").removeClass("showLogin");
+        $("#js-sign-in-container").addClass("closeLogin");
         $(this).addClass("active");
-        $(".js-sign-up-container").show(500);
+        $("#js-sign-up-container").removeClass("closeRegister");
+        $("#js-sign-up-container").addClass("showRegister");
     });
     // 设置为屏幕宽度
     $(document).ready(function () {
@@ -30,7 +35,6 @@ $(document).ready(function () {
         //如果验证通过()则提交表单
         alert(bootstrapValidator.validate());
     });
-
 
     // 登录表单验证
     $('#loginform').bootstrapValidator({
@@ -70,15 +74,16 @@ $(document).ready(function () {
                     different: {
                         field: 'username',
                         message: '密码和用户名不能相同'
-                    }
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 20,
+                        message: '密码长度在6~20之间'
+                    },
                 }
             }
         }
     });
-
-
-
-
 
 
     // 注册表单验证

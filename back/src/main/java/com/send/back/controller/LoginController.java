@@ -7,6 +7,7 @@ import com.send.back.domain.user.SessionUser;
 import com.send.back.domain.user.UserLogin;
 import com.send.back.service.inter.UserService;
 import com.send.back.utils.Constants;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,8 +36,19 @@ public class LoginController extends  BaseController{
 
 
     @RequestMapping("goToLogin")
-    public String goToLogin(){
-        return "user/login";
+    public ModelAndView goToLogin(String type){
+        System.out.println(type);
+        ModelAndView modelAndView = new ModelAndView("user/login");
+        if(StringUtils.isNotEmpty(type)){
+            if(type.equals("0")){//点击登陆
+                modelAndView.addObject("login",0);
+            }else{
+                modelAndView.addObject("login",1);
+            }
+        }else{
+            modelAndView.addObject("login",0);
+        }
+        return modelAndView;
     }
 
     /**
@@ -151,7 +165,6 @@ public class LoginController extends  BaseController{
     @ResponseBody
     @RequestMapping("checkUsername")
     public String checkUsername(String username){
-        System.out.println(username);
         JSONObject jsonObject = new JSONObject();
      if(userService.findUserByUserName(username)!= null){
          jsonObject.put("valid",false);
@@ -180,5 +193,4 @@ public class LoginController extends  BaseController{
         }
         return jsonObject.toJSONString();
     }
-
 }

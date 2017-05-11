@@ -39,9 +39,7 @@ body{
     height: 40px;
     margin-bottom: 0;
     padding: 4px 12px 4px 35px;
-    border: 1px solid #c8c8c8;
     border-radius: 0 0 4px 4px;
-    background-color: hsla(0,0%,71%,.1);
     vertical-align: middle;
 }
 .sign .remember-btn{
@@ -70,9 +68,9 @@ body{
     /*display: block;*/
     clear: both;
 }
-.js-sign-up-container{
-    display: none;
-}
+/*.js-sign-up-container{*/
+    /*display: none;*/
+/*}*/
 .sign-up-button{
     width: 100%;
     padding: 9px 18px;
@@ -91,9 +89,31 @@ body{
 .login-username{
     background:url("../img/user.ico") no-repeat center left;
 }
+
 .login-password{
+    background:url("../img/password.ico") no-repeat center left;
+}
+#register_email{
+    background:url("../img/email.ico") no-repeat center left;
+}
+#register_username{
+    background:url("../img/user.ico") no-repeat center left;
+}
+#register_password{
     background:url("../img/password.ico") no-repeat center left;
 }
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+.showRegister{
+    display: block;
+}
+.closeRegister{
+    display: none;
+}
+.showLogin{
+    display: block;
+}
+.closeLogin{
+    display: none;
 }

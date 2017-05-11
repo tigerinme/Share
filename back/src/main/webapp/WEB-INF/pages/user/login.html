@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,7 +10,6 @@
     <link rel="stylesheet" href="../res/css/login.css">
     <link rel="stylesheet" href="../res/css/bootstrap.min.css">
     <link rel="stylesheet" href="../res/css/bootstrapValidator.min.css">
-
     <script type="application/javascript" src="../res/js/login.js"></script>
 
 
@@ -19,17 +19,17 @@
     <div class="main">
         <h4 class="title">
             <div class="normal-title">
-                <a id="js-sign-in-btn" class="active" href="#">登录</a>
+                <a id="js-sign-in-btn" th:class="${login == 0}?'active':''" href="#">登录</a>
                 <b>.</b>
-                <a id="js-sign-up-btn" class="" href="#">注册</a>
+                <a id="js-sign-up-btn" th:class="${login == 1}?'active':''" href="#">注册</a>
             </div>
         </h4>
         <!--登陆-->
-        <div class="js-sign-in-container">
-            <form id="loginform" method="post" class="form-horizontal">
+        <div id="js-sign-in-container"  th:class="${login==0} ?'showLogin':'closeLogin'" >
+            <form id="loginform" method="post" class="form-horizontal" autocomplete="off">
                 <div class="form-group">
                     <div class="input-prepend">
-                        <input type="text" class=" login-username" name="username" placeholder="用户名/邮箱" value="" >
+                        <input type="text" class="login-username" name="username" placeholder="用户名/邮箱" value="" >
                     </div>
                 </div>
 
@@ -55,8 +55,8 @@
         </div>
 
         <!--注册-->
-        <div class="js-sign-up-container">
-            <form id="registerForm">
+        <div id="js-sign-up-container" th:class="${login==1} ?'showRegister':'closeRegister'">
+            <form id="registerForm" autocomplete="off">
                 <div class="form-group">
                     <div class="input-prepend">
                         <input placeholder="用户名" type="text" name="username" id="register_username"
@@ -65,14 +65,12 @@
                 </div>
                 <div class="form-group">
                     <div class="input-prepend ">
-                        <input placeholder="邮箱" type="text" name="email" id="register_email"
-                               autocomplete="off">
+                        <input placeholder="邮箱" type="text" name="email" id="register_email" autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-prepend">
-                        <input placeholder="密码" type="password" name="password" id="register_password"
-                               autocomplete="off">
+                        <input placeholder="密码" type="password" name="password" id="register_password" autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group">
