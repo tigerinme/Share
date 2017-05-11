@@ -26,14 +26,18 @@ $(document).ready(function () {
     });
 
     $('#signUpButton').click(function () {
-        $('#registerForm').data('bootstrapValidator').validate();
+        // 触发校验
+        $('#registerForm').bootstrapValidator('validate');
+       if($('#registerForm').data("bootstrapValidator").isValid()){
+           // 注册ajax
+       }
     });
     $('#signInButton').click(function () {
-        //表单提交前再进行一次验证
-        var bootstrapValidator = $("#loginForm").data('bootstrapValidator');
-        bootstrapValidator.validate();
-        //如果验证通过()则提交表单
-        alert(bootstrapValidator.validate());
+        // 触发校验
+        $('#loginform').bootstrapValidator('validate');
+        if($('#loginform').data("bootstrapValidator").isValid()){
+            // 登录ajax
+        }
     });
 
     // 登录表单验证
