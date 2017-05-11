@@ -19,15 +19,15 @@
     <div class="main">
         <h4 class="title">
             <div class="normal-title">
-                <a id="js-sign-in-btn" th:class="${login == 0}?'active':''" href="#">登录</a>
+                <a id="js-sign-in-btn" th:class="${type == 0}?'active':''" href="#">登录</a>
                 <b>.</b>
-                <a id="js-sign-up-btn" th:class="${login == 1}?'active':''" href="#">注册</a>
+                <a id="js-sign-up-btn" th:class="${type == 1}?'active':''" href="#">注册</a>
             </div>
         </h4>
         <div id="showError">
         </div>
         <!--登陆-->
-        <div id="js-sign-in-container"  th:class="${login==0} ?'showLogin':'closeLogin'" >
+        <div id="js-sign-in-container"  th:class="${type==0} ?'showLogin':'closeLogin'" >
             <form id="loginform"  autocomplete="off">
                 <div class="form-group">
                     <div class="input-prepend">
@@ -56,7 +56,7 @@
             </form>
         </div>
         <!--注册-->
-        <div id="js-sign-up-container" th:class="${login==1} ?'showRegister':'closeRegister'">
+        <div id="js-sign-up-container" th:class="${type==1} ?'showRegister':'closeRegister'">
             <form id="registerForm" autocomplete="off">
                 <div class="form-group">
                     <div class="input-prepend">

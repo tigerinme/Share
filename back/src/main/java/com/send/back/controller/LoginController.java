@@ -37,16 +37,15 @@ public class LoginController extends  BaseController{
 
     @RequestMapping("goToLogin")
     public ModelAndView goToLogin(String type){
-        System.out.println(type);
         ModelAndView modelAndView = new ModelAndView("user/login");
         if(StringUtils.isNotEmpty(type)){
             if(type.equals("0")){//点击登陆
-                modelAndView.addObject("login",0);
+                modelAndView.addObject("type",0);
             }else{
-                modelAndView.addObject("login",1);
+                modelAndView.addObject("type",1);
             }
         }else{
-            modelAndView.addObject("login",0);
+            modelAndView.addObject("type",0);
         }
         return modelAndView;
     }
