@@ -68,7 +68,7 @@ public interface UserMapper {
      * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
      * @since 2017/5/8
      */
-    @Update({"update user_login set ip = #{ip},last_login_time = now() where id = #{id}"})
+    @Update({"update user_login set last_login_ip = #{ip},last_login_time = now() where id = #{id}"})
     void updateLastLoginInfo(@Param("ip") String ip,
                              @Param("id") Integer id);
 }

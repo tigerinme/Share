@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
             userLogin = this.findUserByUserName(username);
         }
         if(null ==userLogin){
-          return new Failed("用户不存在");
+          return new Failed("用户名错误");
         }
         if(!userLogin.getPassword().equals(Md5Util.getMD5(password+md5key))){
             return new Failed("登录密码错误");

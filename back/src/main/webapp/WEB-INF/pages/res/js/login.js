@@ -28,44 +28,60 @@ $(document).ready(function () {
     $('#signUpButton').click(function () {
         // 触发校验
         $('#registerForm').bootstrapValidator('validate');
-       if($('#registerForm').data("bootstrapValidator").isValid()){
-          register();
-       }
+        if ($('#registerForm').data("bootstrapValidator").isValid()) {
+            register();
+        }
     });
     $('#signInButton').click(function () {
         // 触发校验
         $('#loginform').bootstrapValidator('validate');
-        if($('#loginform').data("bootstrapValidator").isValid()){
+        if ($('#loginform').data("bootstrapValidator").isValid()) {
             login();
         }
     });
 
-    function login(){
+    function login() {
         $.ajax({
             type: 'POST',
             url: '../user/login',
-            data: 'username='+$('#lo_username').val()+'&password='+$('#lo_password').val(),
+            data: 'username=' + $('#lo_username').val() + '&password=' + $('#lo_password').val(),
             success: function (data) {
-
+                if (data.status == 0) { //登录失败
+                    $('#showError').html(data.info);
+                    setTimeout(
+                        function () {
+                            $("#showError").hide('slow');
+                            $("#showError").html('');
+                        }, 1000);//1秒后执行该方法
+                }
             },
-            error: function (data) {
+            error: function () {
 
             }
         });
     }
-    function register(){
+
+    function register() {
         $.ajax({
             type: 'POST',
             url: '../user/register',
-            data: 'username='+$('#register_username').val()+'&email='+$('#register_email').val()+'&password='+$('#register_password').val(),
+            data: 'username=' + $('#register_username').val() + '&email=' + $('#register_email').val() + '&password=' + $('#register_password').val(),
             success: function (data) {
-
+                if (data.status == 0) { //注册失败
+                    $('#showError').html(data.info);
+                    setTimeout(
+                        function () {
+                            $("#showError").hide('slow');
+                            $("#showError").html('');
+                        }, 1000);//1秒后执行该方法
+                }
             },
             error: function (data) {
 
             }
         });
     }
+
     // 登录表单验证
     $('#loginform').bootstrapValidator({
         message: 'This value is not valid',

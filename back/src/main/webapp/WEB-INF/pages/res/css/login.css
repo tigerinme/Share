@@ -117,3 +117,9 @@ input:-webkit-autofill {
 .closeLogin{
     display: none;
 }
+
+#showError{
+    margin-bottom: 10px;
+    color:#A94442;
+    font-size: 10px;
+}

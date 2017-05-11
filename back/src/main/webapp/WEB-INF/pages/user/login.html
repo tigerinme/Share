@@ -24,6 +24,8 @@
                 <a id="js-sign-up-btn" th:class="${login == 1}?'active':''" href="#">注册</a>
             </div>
         </h4>
+        <div id="showError">
+        </div>
         <!--登陆-->
         <div id="js-sign-in-container"  th:class="${login==0} ?'showLogin':'closeLogin'" >
             <form id="loginform"  autocomplete="off">
@@ -53,7 +55,6 @@
                 </div>
             </form>
         </div>
-
         <!--注册-->
         <div id="js-sign-up-container" th:class="${login==1} ?'showRegister':'closeRegister'">
             <form id="registerForm" autocomplete="off">
