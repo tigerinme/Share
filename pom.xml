@@ -253,7 +253,7 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-        <finalName>SpringTest</finalName>
+        <finalName>Share</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -135,7 +135,7 @@ public class LoginController extends  BaseController{
         userLogin.setLastLoginIp(ip);
         userLogin.setUsername(username);
         userLogin.setPassword(password);
-        userLogin.setEmail(email);
+        userLogin.setEmail(email.toLowerCase());
         //注册用户
         Result result = userService.register(userLogin);
         //注册用户失败
