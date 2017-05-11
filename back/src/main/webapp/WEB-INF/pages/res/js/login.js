@@ -47,7 +47,10 @@ $(document).ready(function () {
             data: 'username=' + $('#lo_username').val() + '&password=' + $('#lo_password').val(),
             success: function (data) {
                 if (data.status == 0) { //登录失败
+                    $("#showError").removeAttr('style');
                     $('#showError').html(data.info);
+                    //登陆按钮置为可用
+                    $('#signInButton').removeAttr("disabled");
                     setTimeout(
                         function () {
                             $("#showError").hide('slow');
@@ -68,7 +71,10 @@ $(document).ready(function () {
             data: 'username=' + $('#register_username').val() + '&email=' + $('#register_email').val() + '&password=' + $('#register_password').val(),
             success: function (data) {
                 if (data.status == 0) { //注册失败
+                    $("#showError").removeAttr('style');
                     $('#showError').html(data.info);
+                    //注册按钮置为可用
+                    $('#signUpButton').removeAttr("disabled");
                     setTimeout(
                         function () {
                             $("#showError").hide('slow');
