@@ -29,17 +29,43 @@ $(document).ready(function () {
         // 触发校验
         $('#registerForm').bootstrapValidator('validate');
        if($('#registerForm').data("bootstrapValidator").isValid()){
-           // 注册ajax
+          register();
        }
     });
     $('#signInButton').click(function () {
         // 触发校验
         $('#loginform').bootstrapValidator('validate');
         if($('#loginform').data("bootstrapValidator").isValid()){
-            // 登录ajax
+            login();
         }
     });
 
+    function login(){
+        $.ajax({
+            type: 'POST',
+            url: '../user/login',
+            data: 'username='+$('#lo_username').val()+'&password='+$('#lo_password').val(),
+            success: function (data) {
+
+            },
+            error: function (data) {
+
+            }
+        });
+    }
+    function register(){
+        $.ajax({
+            type: 'POST',
+            url: '../user/register',
+            data: 'username='+$('#register_username').val()+'&email='+$('#register_email').val()+'&password='+$('#register_password').val(),
+            success: function (data) {
+
+            },
+            error: function (data) {
+
+            }
+        });
+    }
     // 登录表单验证
     $('#loginform').bootstrapValidator({
         message: 'This value is not valid',

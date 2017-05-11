@@ -75,8 +75,6 @@ public class LoginController extends  BaseController{
                         String rememberMe) {
 
         final String REMEMBER_ME = "1";
-        String jsessionId = session.getId();
-        logger.info("请求的sessionId:{}", jsessionId);
         UserLogin userLogin;
         Result result = userService.login(username, password, this.getIpAddr(request));
         if(result.getStatus() == 0){
