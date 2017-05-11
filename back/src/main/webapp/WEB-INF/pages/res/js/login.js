@@ -20,8 +20,20 @@ $(document).ready(function () {
         $("#sign").css("minHeight", w + "px")
     });
 
-// 注册表单验证
-    $('#loginForm').bootstrapValidator({
+    $('#signUpButton').click(function () {
+        $('#registerForm').data('bootstrapValidator').validate();
+    });
+    $('#signInButton').click(function () {
+        //表单提交前再进行一次验证
+        var bootstrapValidator = $("#loginForm").data('bootstrapValidator');
+        bootstrapValidator.validate();
+        //如果验证通过()则提交表单
+        alert(bootstrapValidator.validate());
+    });
+
+
+    // 登录表单验证
+    $('#loginform').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -29,7 +41,8 @@ $(document).ready(function () {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            login_username: {
+            username: {
+                message: 'The username is not valid',
                 validators: {
                     notEmpty: {
                         message: '用户名不能为空'
@@ -37,11 +50,11 @@ $(document).ready(function () {
                     stringLength: {
                         min: 6,
                         max: 20,
-                        message: '用户名必须大于6，小于20个字'
+                        message: '用户名长度在6~20之间'
                     },
                     regexp: {
                         regexp: /^[a-zA-Z0-9_\.]+$/,
-                        message: '用户名只能由字母、数字、点和下划线组成'
+                        message: '用户名只能包含字母数字下划线和点'
                     },
                     different: {
                         field: 'password',
@@ -49,23 +62,14 @@ $(document).ready(function () {
                     }
                 }
             },
-            login_password: {
+            password: {
                 validators: {
                     notEmpty: {
                         message: '密码不能为空'
                     },
-                    stringLength: {
-                        min: 6,
-                        max: 20,
-                        message: '密码必须大于6，小于20个字'
-                    },
                     different: {
                         field: 'username',
-                        message: '用户名和密码不能相同'
-                    },
-                    regexp: {
-                        regexp: /^[a-zA-Z0-9_\.]+$/,
-                        message: '密码只能由字母、数字、点和下划线组成'
+                        message: '密码和用户名不能相同'
                     }
                 }
             }
@@ -86,13 +90,13 @@ $(document).ready(function () {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            register_username: {
+            username: {
                 validators: {
                     remote: {
                         message: "用户名已经被使用，抓紧换一个吧",
                         url: "../user/checkUsername",
                         data: {
-                            register_username: $("#register_username").val()
+                            username: $("#register_username").val()
                         },
                         delay: 2000
                     },
@@ -114,7 +118,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            register_password: {
+            password: {
                 validators: {
                     notEmpty: {
                         message: '密码不能为空'
@@ -134,14 +138,13 @@ $(document).ready(function () {
                     }
                 }
             },
-            register_email: {
+            email: {
                 validators: {
                     notEmpty: {
                         message: '邮箱不能为空'
                     },
-                    regexp: {
-                        regexp: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/,
-                        message: '邮箱格式错误'
+                    emailAddress: {
+                        message: '邮箱地址格式有误'
                     },
                     remote: {
                         message: "邮箱已经被使用，抓紧换一个吧",

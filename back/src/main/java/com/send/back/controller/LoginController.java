@@ -150,10 +150,10 @@ public class LoginController extends  BaseController{
     */
     @ResponseBody
     @RequestMapping("checkUsername")
-    public String checkUsername(String register_username){
-        System.out.println(register_username);
+    public String checkUsername(String username){
+        System.out.println(username);
         JSONObject jsonObject = new JSONObject();
-     if(userService.findUserByUserName(register_username)!= null){
+     if(userService.findUserByUserName(username)!= null){
          jsonObject.put("valid",false);
      }else{
          jsonObject.put("valid",true);
@@ -171,9 +171,9 @@ public class LoginController extends  BaseController{
      */
     @ResponseBody
     @RequestMapping("checkEmail")
-    public String checkEmail(String register_email){
+    public String checkEmail(String email){
         JSONObject jsonObject = new JSONObject();
-        if(userService.findUserByEmail(register_email)!=null){
+        if(userService.findUserByEmail(email)!=null){
             jsonObject.put("valid",false);
         }else{
             jsonObject.put("valid",true);
