@@ -1,8 +1,6 @@
-/**
- * Created by rainy on 2017/5/7.
- */
 
 $(document).ready(function () {
+    // alert($.session('session_user_key'));
     $("#search-input").click(function (e) {
         $(this).animate({"width": "260px"})
     }).blur(function () {

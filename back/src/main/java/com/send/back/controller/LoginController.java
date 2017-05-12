@@ -7,6 +7,7 @@ import com.send.back.domain.user.SessionUser;
 import com.send.back.domain.user.UserLogin;
 import com.send.back.service.inter.UserService;
 import com.send.back.utils.Constants;
+import com.send.back.utils.TokenUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("user")
@@ -49,6 +53,11 @@ public class LoginController extends  BaseController{
         }
         return modelAndView;
     }
+//
+//    @RequestMapping("goToIndex")
+//    public String index(){
+//     return "index";
+//    }
 
     /**
      * 功能描述：用户登录处理
@@ -73,13 +82,35 @@ public class LoginController extends  BaseController{
                         String password,
                         String rememberMe) {
 
+//        String token2=request.getHeader("token");
+//        Map<String,Object> result2 =TokenUtil.validToken(token2);
+//        System.out.println(JSONObject.toJSON(result2).toString());
+
+        Cookie[] cookies = request.getCookies();
+        if(null != cookies) {
+        for(Cookie c :cookies ){
+            System.out.println(c.getName()+"--->"+c.getValue());
+        }}
+
         final String REMEMBER_ME = "1";
         UserLogin userLogin;
         Result result = userService.login(username, password, this.getIpAddr(request));
         if(result.getStatus() == 0){
             return result;
         }else{
+            //生成token
             userLogin = (UserLogin) result.getReturnMessage();
+            Map<String , Object> payload=new HashMap<String, Object>();
+            Date date=new Date();
+            payload.put("uid", userLogin.getId());//用户id
+            payload.put("iat", date.getTime());//生成时间
+            payload.put("ext",date.getTime()+1000*60*60);//过期时间1小时
+            String token= TokenUtil.createToken(payload);
+            Cookie cookie=new Cookie("token", token);
+            cookie.setMaxAge(3600);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+            //生成session
             SessionUser sessionUser = new SessionUser();
             sessionUser.setUserId(userLogin.getId());
             sessionUser.setUsername(userLogin.getUsername());
@@ -87,28 +118,7 @@ public class LoginController extends  BaseController{
         }
         //记住登陆状态
         if (REMEMBER_ME.equals(rememberMe)) {
-            // 自动登录，保存用户名密码到 Cookie
-            String infor = null;
-            try {
-                infor = URLEncoder.encode(username, "utf-8") + "|" + userLogin.getPassword();
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            // 清除之前的Cookie 信息
-            Cookie cookie = new Cookie(Constants.COOKIE_USER_INFO, null);
-            cookie.setPath("/");
-            cookie.setMaxAge(0);
-            // 建用户信息保存到Cookie中
-            cookie = new Cookie(Constants.COOKIE_USER_INFO, infor);
-            cookie.setPath("/");
-            // 设置最大生命周期为1天。
-            cookie.setMaxAge(1*24*60*60);
-            response.addCookie(cookie);
-        } else {
-            Cookie cookie = new Cookie(Constants.COOKIE_USER_INFO, null);
-            cookie.setMaxAge(0);
-            cookie.setPath("/");
-            response.addCookie(cookie);
+
         }
         return new Success("登录成功");
     }

@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -7,22 +6,57 @@
     <title>乐享 - 快乐源于分享</title>
     <meta name="Keywords" content="乐享">
     <meta name="Description" content="乐享 - 快乐源于分享">
-    <link rel="stylesheet" href="res/css/index-header.css">
-    <link rel="stylesheet" href="res/css/index-footer.css">
-    <link rel="stylesheet" href="res/css/index.css">
     <link rel="stylesheet" href="res/css/bootstrap.min.css">
-    <script type="application/javascript" src="res/js/jquery-3.2.1.js"></script>
-    <script type="application/javascript" src="res/js/bootstrap.min.js"></script>
-    <script type="application/javascript" src="res/js/index-header.js"></script>
-    <script type="application/javascript" src="res/js/index.js"></script>
+    <link rel="stylesheet" href="./res/css/index.css">
+
+    <script type="text/javascript" src="./res/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="./res/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="./res/js/index-header.js"></script>
+
+    <script type="text/javascript" src="./res/js/index.js"></script>
+    <link rel="stylesheet" href="./res/css/index-footer.css">
+    <link rel="stylesheet" href="./res/css/index-header.css">
+
 
 </head>
 <body style="padding: 0px;margin: 0px">
-
 <div class="header-div">
-      <iframe src="./template/header.html" class="header-iframe" scrolling="no"></iframe>
-</div>
 
+    <div th:text="${session.session_user_key.username}"></div>
+    <div class="index-header">
+        <div class="logo">
+            <a href="#" style="text-decoration: none">
+                <span class="name">乐享</span>
+            </a>
+        </div>
+        <div class="discover">
+            <a href="#" style="text-decoration: none">
+                <span class="name">发现</span>
+            </a>
+        </div>
+        <div class="search">
+            <input type="text" class="search-input" id="search-input" placeholder="搜索你感兴趣的内容......">
+        </div>
+        <!--写分享-->
+        <div class="share">
+            <a href="#" style="text-decoration: none">
+                <span class="name">添加分享</span>
+            </a>
+        </div>
+
+        <div class="userlogin">
+            <a href="user/goToLogin?type=0" target="_parent" style="text-decoration: none">
+                <span name="">登录</span>
+            </a>
+            <a href="user/goToLogin?type=1" target="_parent" style="text-decoration: none">
+                <span name="">注册</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+<!--内容-->
 <div class="container">
     <div class="wrap" id="wrap">
         <div class="content">
@@ -33,11 +67,11 @@
         </div>
     </div>
 </div>
-
 <div class="footer-div">
-    <iframe src="./template/footer.html" class="footer-iframe" scrolling="no"></iframe>
+    <div class="index-footer">
+        公共底部显示区域:用户名
+        <div th:text="${session.session_user_key.username}"></div>
+    </div>
 </div>
-
 </body>
-
 </html>

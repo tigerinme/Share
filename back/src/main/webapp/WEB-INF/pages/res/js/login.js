@@ -56,6 +56,8 @@ $(document).ready(function () {
                             $("#showError").hide('slow');
                             $("#showError").html('');
                         }, 1000);//1秒后执行该方法
+                }else{
+                    document.location.href = '../';
                 }
             },
             error: function () {
