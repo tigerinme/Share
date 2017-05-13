@@ -45,6 +45,7 @@
     <welcome-file-list>
         <welcome-file>/index</welcome-file>
     </welcome-file-list>
+
 <!--&lt;!&ndash;spring security拦截&ndash;&gt;-->
     <!--<filter>-->
         <!--<filter-name>springSecurityFilterChain</filter-name>-->

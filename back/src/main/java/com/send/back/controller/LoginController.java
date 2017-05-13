@@ -215,4 +215,9 @@ public class LoginController extends  BaseController{
         }
         return jsonObject.toJSONString();
     }
+
+    @RequestMapping("goToShare")
+    public String goToShare(){
+        return "share";
+    }
 }
