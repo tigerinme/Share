@@ -23,7 +23,7 @@
 <body style="padding: 0px;margin: 0px">
 <div class="header-div">
 
-    <div th:text="${session.session_user_key.username}"></div>
+
     <div class="index-header">
         <div class="logo">
             <a href="#" style="text-decoration: none">
@@ -44,8 +44,8 @@
                 <span class="name">添加分享</span>
             </a>
         </div>
-
-        <div class="userlogin">
+        <!--session存在-->
+        <div class="userlogin" th:if="${session.session_user_key == null}">
             <a href="user/goToLogin?type=0" target="_parent" style="text-decoration: none">
                 <span name="">登录</span>
             </a>
@@ -53,6 +53,27 @@
                 <span name="">注册</span>
             </a>
         </div>
+        <!--用户中心-->
+        <div class="usercenter" th:if="${session.session_user_key != null}">
+            <div class="userinfo">
+                <a>
+                    <img src="./res/img/avatar.png" class="avatar">
+                </a>
+                <p th:if="${session.session_user_key != null}" th:text="${session.session_user_key.username}"
+                   class="usercenter-username">
+            </div>
+            <div class="useroperator">
+                <ul>
+                    <li><a href="#">我的主页</a></li>
+                    <li><a href="#">我的收藏</a></li>
+                    <li><a href="#">我的关注</a></li>
+                    <li><a href="#">设置</a></li>
+                    <li><a href="#">帮助与反馈</a></li>
+                    <li><a href="#">退出</a></li>
+                </ul>
+            </div>
+        </div>
+
 
     </div>
 </div>
@@ -69,8 +90,7 @@
 </div>
 <div class="footer-div">
     <div class="index-footer">
-        公共底部显示区域:用户名
-        <div th:text="${session.session_user_key.username}"></div>
+        公共底部显示区域
     </div>
 </div>
 </body>

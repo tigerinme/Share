@@ -59,7 +59,28 @@
     margin-top: 20px;
     font-size: 20px;
 }
+.usercenter{
+    width: 150px;
+    /*border: 1px solid gainsboro;*/
+    float: right;
+    margin-right: 100px;
+    font-size: 16px;
+    margin-top: 0px;
+}
+.avatar{
+    margin-left: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
+.usercenter-username{
+    float: right;
+    margin-top: 20px;
+    margin-right: 5px;
+}
 .index-header .share {
     float: right;
     margin-top: 20px;
@@ -68,4 +89,23 @@
 
 .index-header .share a span.name {
     font-size: 20px;
+}
+.useroperator{
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    position: absolute;
+    background: white;
+    width: 150px;
+}
+.usercenter ul{
+    padding:5px 0px 0px 0px;
+}
+.usercenter li{
+    list-style-type: none;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.usercenter li a{
+    text-decoration: none;
 }

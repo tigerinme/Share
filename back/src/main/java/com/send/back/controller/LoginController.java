@@ -114,6 +114,7 @@ public class LoginController extends  BaseController{
             SessionUser sessionUser = new SessionUser();
             sessionUser.setUserId(userLogin.getId());
             sessionUser.setUsername(userLogin.getUsername());
+            System.out.println(userLogin.getUsername());
             session.setAttribute(Constants.SESSION_USER_KEY, sessionUser);
         }
         //记住登陆状态
@@ -136,6 +137,7 @@ public class LoginController extends  BaseController{
     @RequestMapping("register")
     public Result register(HttpSession session,
                        HttpServletRequest request,
+                       HttpServletResponse response,
                        String username,
                        String email,
                        String password) {
@@ -151,7 +153,20 @@ public class LoginController extends  BaseController{
         //注册用户失败
         if(result.getStatus()==0){
             return result;
-        }else{//把用户信息加入session
+        }else{
+            //生成token
+            userLogin = (UserLogin) result.getReturnMessage();
+            Map<String , Object> payload=new HashMap<String, Object>();
+            Date date=new Date();
+            payload.put("uid", userLogin.getId());//用户id
+            payload.put("iat", date.getTime());//生成时间
+            payload.put("ext",date.getTime()+1000*60*60);//过期时间1小时
+            String token= TokenUtil.createToken(payload);
+            Cookie cookie=new Cookie("token", token);
+            cookie.setMaxAge(3600);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+            //生成session
             SessionUser sessionUser = new SessionUser();
             sessionUser.setUserId(userLogin.getId());
             sessionUser.setUsername(userLogin.getUsername());
