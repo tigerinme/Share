@@ -28,8 +28,10 @@
         <!--登陆-->
         <div id="js-sign-in-container"  th:class="${type==0} ?'showLogin':'closeLogin'" >
             <form id="loginform"  autocomplete="off">
+
                 <div class="form-group">
                     <div class="input-prepend">
+                        <input type="hidden" th:if="${from!=null}" th:value="${from}" id="from">
                         <input type="text" class="login-username" name="username" placeholder="用户名/邮箱" value="" id="lo_username">
                     </div>
                 </div>

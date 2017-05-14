@@ -54,10 +54,10 @@
         </div>
         <!--session存在-->
         <div class="userlogin" th:if="${session.session_user_key == null}">
-            <a href="user/goToLogin?type=0" target="_parent" style="text-decoration: none">
+            <a href="user/goToLogin?type=0&from=0" target="_parent" style="text-decoration: none">
                 <span name="">登录</span>
             </a>
-            <a href="user/goToLogin?type=1" target="_parent" style="text-decoration: none">
+            <a href="user/goToLogin?type=1&from=0" target="_parent" style="text-decoration: none">
                 <span name="">注册</span>
             </a>
         </div>

@@ -33,6 +33,7 @@ $(document).ready(function () {
         }
     });
     $('#signInButton').click(function () {
+
         // 触发校验
         $('#loginform').bootstrapValidator('validate');
         if ($('#loginform').data("bootstrapValidator").isValid()) {
@@ -41,6 +42,10 @@ $(document).ready(function () {
     });
 
     function login() {
+        var from = $("#from").val();
+        if(from == undefined){
+          from = -1;
+        }
         $.ajax({
             type: 'POST',
             url: '../user/login',
@@ -57,7 +62,12 @@ $(document).ready(function () {
                             $("#showError").html('');
                         }, 1000);//1秒后执行该方法
                 }else{
-                    document.location.href = '../';
+                    if(from==0){
+                        document.location.href = '../user/goToShare';
+                    }else{
+                        document.location.href = '../';
+                    }
+
                 }
             },
             error: function () {
@@ -67,6 +77,10 @@ $(document).ready(function () {
     }
 
     function register() {
+        var from = $("#from").val();
+        if(from == undefined){
+            from = -1;
+        }
         $.ajax({
             type: 'POST',
             url: '../user/register',
@@ -84,8 +98,12 @@ $(document).ready(function () {
                         }, 1000);//1秒后执行该方法
                 }
             },
-            error: function (data) {
-
+            error: function () {
+                if(from==0){
+                    document.location.href = '../user/goToShare';
+                }else{
+                    document.location.href = '../';
+                }
             }
         });
     }

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,8 +41,10 @@ public class LoginController extends  BaseController{
 
 
     @RequestMapping("goToLogin")
-    public ModelAndView goToLogin(String type){
+    public ModelAndView goToLogin(String type,
+                                  @RequestParam(required = false) String from){
         ModelAndView modelAndView = new ModelAndView("user/login");
+        System.out.println(from);
         if(StringUtils.isNotEmpty(type)){
             if(type.equals("0")){//点击登陆
                 modelAndView.addObject("type",0);
@@ -51,13 +54,12 @@ public class LoginController extends  BaseController{
         }else{
             modelAndView.addObject("type",0);
         }
+        if (StringUtils.isNoneEmpty(from)){
+            modelAndView.addObject("from",from);
+        }
         return modelAndView;
     }
-//
-//    @RequestMapping("goToIndex")
-//    public String index(){
-//     return "index";
-//    }
+
 
     /**
      * 功能描述：用户登录处理
@@ -80,7 +82,8 @@ public class LoginController extends  BaseController{
                         HttpServletResponse response,
                         String username,
                         String password,
-                        String rememberMe) {
+                        String rememberMe,
+                        String from) {
 
 //        String token2=request.getHeader("token");
 //        Map<String,Object> result2 =TokenUtil.validToken(token2);
