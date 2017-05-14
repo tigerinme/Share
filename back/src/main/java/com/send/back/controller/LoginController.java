@@ -223,4 +223,12 @@ public class LoginController extends  BaseController{
     public String goToShare(){
         return "share";
     }
+
+
+    @RequestMapping("loginOut")
+    public String loginOut(HttpServletRequest request,
+                           HttpServletResponse response){
+
+        return "index";
+    }
 }
