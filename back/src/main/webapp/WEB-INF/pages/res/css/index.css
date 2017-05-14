@@ -4,8 +4,6 @@ a {
 .wrap{
    margin-top: 10px;
     color: rebeccapurple;
-    background:red;
-
 }
 .content{
     float: left;
@@ -15,6 +13,7 @@ a {
     margin-right:5px;
     margin-bottom: 5px;
 }
+
 .sidebar{
     float: left;
     width: 20%;

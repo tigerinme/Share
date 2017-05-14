@@ -17,11 +17,11 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
     <!--<mvc:default-servlet-handler/>-->
     <!-- 配置静态资源 图片、js、css、html、插件 -->
 
-    <mvc:resources mapping="res/css/**" location="/WEB-INF/pages/res/css/" />
-    <mvc:resources mapping="res/js/**" location="/WEB-INF/pages/res/js/" />
-    <mvc:resources mapping="res/img/**" location="/WEB-INF/pages/res/img/" />
-    <mvc:resources mapping="res/fonts/**" location="/WEB-INF/pages/res/fonts/" />
-
+    <mvc:resources mapping="/res/css/**" location="/WEB-INF/pages/res/css/" />
+    <mvc:resources mapping="/res/js/**" location="/WEB-INF/pages/res/js/" />
+    <mvc:resources mapping="/res/img/**" location="/WEB-INF/pages/res/img/" />
+    <mvc:resources mapping="/res/fonts/**" location="/WEB-INF/pages/res/fonts/" />
+    <mvc:resources mapping="/res/richtext/**" location="/WEB-INF/pages/res/richtext/" />
 
     <!--html5视图解析-->
     <bean id="templateResolver"

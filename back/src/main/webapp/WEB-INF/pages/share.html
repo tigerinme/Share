@@ -5,20 +5,28 @@
     <meta charset="UTF-8">
     <title>乐享 - 快乐源于分享</title>
     <meta name="Keywords" content="乐享">
-    <!--<base href="http://localhost:8080/back/">-->
+    <base href="http://localhost:8080/back/">
     <meta name="Description" content="乐享 - 快乐源于分享">
     <link rel="stylesheet" href="./res/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./res/css/index.css">
+    <link rel="stylesheet" href="./res/css/share.css">
     <script type="text/javascript" src="./res/js/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="./res/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./res/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="./res/js/index-header.js"></script>
-
-    <script type="text/javascript" src="./res/js/index.js"></script>
+    <script type="text/javascript" src="./res/richtext/js/wangEditor.js"></script>
+    <script type="text/javascript" src="./res/js/share.js"></script>
     <link rel="stylesheet" href="./res/css/index-footer.css">
     <link rel="stylesheet" href="./res/css/index-header.css">
+    <link rel="stylesheet" href="./res/richtext/css/wangEditor.css">
 
-
+<style>
+    .container {
+        width: 75%;
+        height: 450px;
+        margin: 0 auto;
+        position: relative;
+    }
+</style>
 </head>
 <body style="padding: 0px;margin: 0px">
 <div class="header-div">
@@ -80,12 +88,20 @@
 <!--内容-->
 <div class="container">
     <div class="wrap" id="wrap">
-        <div class="content">
-            内容展示区域
-        </div>
-        <div class="sidebar">
-            侧边栏
-        </div>
+                    <div class="content-share" th:if="${session.session_user_key != null}">
+                        <div class="share-title-div">
+                        <label for="share-title" style="float: left">标题: </label>
+                            <input type="text"  class="form-control" id="share-title" style="width: 60%;float: left">
+                        </div>
+                        <div class="share-richtext-div" style="clear: both">
+                        <!--富文本编辑器-->
+                        <div id="editor-container" class="container">
+                        </div>
+                        </div>
+                    </div>
+                    <div th:if="${session.session_user_key == null}" >
+                        请先登录吧！
+                        </div>
     </div>
 </div>
 <div class="footer-div">

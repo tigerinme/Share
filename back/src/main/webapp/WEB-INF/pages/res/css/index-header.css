@@ -96,6 +96,7 @@
     position: absolute;
     background: white;
     width: 150px;
+    z-index: 1000;
 }
 .usercenter ul{
     padding:5px 0px 0px 0px;

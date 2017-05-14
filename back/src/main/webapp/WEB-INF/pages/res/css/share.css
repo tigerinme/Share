@@ -1,0 +1,19 @@
+.content-share{
+    float: left;
+    border:1px solid gainsboro;
+    width: 100%;
+    min-height: 800px;
+    margin-right:5px;
+    margin-bottom: 5px;
+}
+a {
+    text-decoration: none;
+}
+.wrap {
+    margin-top: 10px;
+    color: rebeccapurple;
+    /*background: red;*/
+}
+.share-title-div{
+    margin-bottom: 10px;
+}
