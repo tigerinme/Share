@@ -1,10 +1,14 @@
 package com.send.back.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
 * 功能描述： 首页
@@ -27,12 +31,12 @@ public class HomeController {
     */
     @RequestMapping(value = "/")
     public String index(HttpServletRequest request){
-        Cookie[] cookies = request.getCookies();
-        if(null != cookies) {
-            for (Cookie c : cookies) {
-                System.out.println(c.getName() + "--->" + c.getValue());
-            }
-        }
+//        Cookie[] cookies = request.getCookies();
+//        if(null != cookies) {
+//            for (Cookie c : cookies) {
+//                System.out.println(c.getName() + "--->" + c.getValue());
+//            }
+//        }
         return "index";
     }
 }

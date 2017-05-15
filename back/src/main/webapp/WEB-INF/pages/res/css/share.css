@@ -1,19 +1,55 @@
-.content-share{
+.edit-share{
     float: left;
-    border:1px solid gainsboro;
     width: 100%;
     min-height: 800px;
-    margin-right:5px;
     margin-bottom: 5px;
+}
+.preview-share{
+    float: right;
+    border:1px solid gainsboro;
+    width: 50%;
+    min-height: 800px;
+    margin-bottom: 5px;
+    border: 1px solid gainsboro;
+    display: none;
 }
 a {
     text-decoration: none;
 }
 .wrap {
     margin-top: 10px;
-    color: rebeccapurple;
-    /*background: red;*/
 }
 .share-title-div{
     margin-bottom: 10px;
+    height: 50px;
+    clear: both;
 }
+.share-richtext-div{
+
+}
+#share-title{
+    border: 0px;
+    border-bottom: 1px solid gainsboro;
+}
+#share-tag{
+    border: 0px;
+    border-bottom: 1px solid gainsboro;
+}
+
+.share-tag-div{
+    position: relative;
+    margin-top: 20px;
+
+}
+.share-button-div{
+    position: relative;
+    margin-top: 100px;
+    width: inherit;
+    text-align: center;
+}
+
+#publish-button{
+    width: 40%;
+    background: gainsboro;
+}
+
