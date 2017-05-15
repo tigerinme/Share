@@ -95,6 +95,7 @@
             <div class="share-title-div">
                 <label for="share-title" style="float: left">标题</label>
                 <input type="text" class="form-control" id="share-title" style="width: 60%;float: left" >
+                <input type="hidden" id="userId" th:value="${session.session_user_key.userId}">
             </div>
 
             <div class="share-richtext-div" style="clear: both">
