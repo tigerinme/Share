@@ -105,8 +105,17 @@
     list-style-type: none;
     height: 50px;
     line-height: 50px;
-    text-align: center;
+    text-align: left;
 }
 .usercenter li a{
     text-decoration: none;
+}
+.personal-li{
+    background: url("../img/personal.ico") no-repeat top;
+}
+
+.usercenter-i{
+    color: #EC6D51;
+    margin-right: 15px ;
+    margin-left: 20px
 }
