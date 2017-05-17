@@ -229,6 +229,6 @@ public class LoginController extends  BaseController{
     public String loginOut(HttpServletRequest request,
                            HttpServletResponse response){
 
-        return "index";
+        return "";
     }
 }

@@ -1,7 +1,7 @@
-/**
- * Created by rainy on 2017/5/9.
- */
-$(document).ready(function () {
-  // alert($.cookie('token'));
 
+$(document).ready(function () {
+    //屏幕宽度
+   var width = window.screen.height;
+   $(".content").css("min-height",width);
+   $(".sidebar").css("min-height",width);
 });

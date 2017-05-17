@@ -6,19 +6,25 @@
     <title>乐享 - 快乐源于分享</title>
     <meta name="Keywords" content="乐享">
     <meta name="Description" content="乐享 - 快乐源于分享">
-    <link rel="stylesheet" href="res/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./res/css/index.css">
 
-    <script type="text/javascript" src="./res/js/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="./res/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./res/js/jquery.cookie.js"></script>
-    <script type="text/javascript" src="./res/js/index-header.js"></script>
+    <script type="text/javascript" src="../res/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../res/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../res/js/index-header.js"></script>
+    <script type="text/javascript" src="../res/js/setup.js"></script>
 
-    <script type="text/javascript" src="./res/js/index.js"></script>
-    <link rel="stylesheet" href="./res/css/index-footer.css">
-    <link rel="stylesheet" href="./res/css/index-header.css">
-
-
+    <link rel="stylesheet" href="../res/css/index-footer.css">
+    <link rel="stylesheet" href="../res/css/index-header.css">
+    <link rel="stylesheet" href="../res/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../res/css/setup.css">
+    <style>
+        .container {
+            width: 75%;
+            height: 450px;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
 </head>
 <body style="padding: 0px;margin: 0px">
 <div class="header-div">
@@ -40,16 +46,16 @@
         </div>
         <!--写分享-->
         <div class="share">
-            <a href="user/goToShare" style="text-decoration: none">
+            <a href="../user/goToShare" style="text-decoration: none">
                 <span class="name">添加分享</span>
             </a>
         </div>
         <!--session存在-->
         <div class="userlogin" th:if="${session.session_user_key == null}">
-            <a href="user/goToLogin?type=0" target="_parent" style="text-decoration: none">
+            <a href="user/goToLogin?type=0&from=0" target="_parent" style="text-decoration: none">
                 <span name="">登录</span>
             </a>
-            <a href="user/goToLogin?type=1" target="_parent" style="text-decoration: none">
+            <a href="user/goToLogin?type=1&from=0" target="_parent" style="text-decoration: none">
                 <span name="">注册</span>
             </a>
         </div>
@@ -57,17 +63,17 @@
         <div class="usercenter" th:if="${session.session_user_key != null}">
             <div class="userinfo">
                 <a>
-                    <img src="./res/img/avatar.png" class="avatar">
+                    <img src="../res/img/avatar.png" class="avatar">
                 </a>
                 <p th:if="${session.session_user_key != null}" th:text="${session.session_user_key.username}"
                    class="usercenter-username">
             </div>
             <div class="useroperator">
                 <ul>
-                    <li><a href="user/personal">我的主页</a></li>
-                    <li><a href="user/setup">设置</a></li>
-                    <li><a href="user/feedback">帮助与反馈</a></li>
-                    <li><a href="user/loginOut">退出</a></li>
+                    <li><a href="../user/personal">我的主页</a></li>
+                    <li><a href="../user/setup">设置</a></li>
+                    <li><a href="../user/feedback">帮助与反馈</a></li>
+                    <li><a href="../user/loginOut">退出</a></li>
                 </ul>
             </div>
         </div>
@@ -79,10 +85,7 @@
 <div class="container">
     <div class="wrap" id="wrap">
         <div class="content">
-            内容展示区域
-        </div>
-        <div class="sidebar">
-            侧边栏
+            设置区域
         </div>
     </div>
 </div>
