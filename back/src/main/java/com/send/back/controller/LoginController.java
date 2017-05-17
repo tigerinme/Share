@@ -82,12 +82,8 @@ public class LoginController extends  BaseController{
                         HttpServletResponse response,
                         String username,
                         String password,
-                        String rememberMe,
+                        @RequestParam(required = false,defaultValue = "0") String rememberMe,
                         String from) {
-
-//        String token2=request.getHeader("token");
-//        Map<String,Object> result2 =TokenUtil.validToken(token2);
-//        System.out.println(JSONObject.toJSON(result2).toString());
 
         Cookie[] cookies = request.getCookies();
         if(null != cookies) {

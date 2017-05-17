@@ -15,11 +15,12 @@
     <script type="text/javascript" src="./res/js/index-header.js"></script>
     <script type="text/javascript" src="./res/richtext/js/wangEditor.js"></script>
     <script type="text/javascript" src="./res/js/share.js"></script>
+    <script type="text/javascript" src="./res/js/bootstrap-tagsinput.js"></script>
     <link rel="stylesheet" href="./res/css/index-footer.css">
     <link rel="stylesheet" href="./res/css/index-header.css">
     <link rel="stylesheet" href="./res/richtext/css/wangEditor.css">
     <link rel="stylesheet" href="./res/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="./res/css/bootstrap-tagsinput.css">
 
     <style>
         .container {
@@ -74,10 +75,14 @@
             </div>
             <div class="useroperator">
                 <ul>
-                    <li><a href="user/personal"><i class="glyphicon glyphicon-home usercenter-i" ></i><span >我的主页</span></a></li>
-                    <li><a href="user/setup"><i class="glyphicon glyphicon-cog usercenter-i"></i><span>设置</span></a></li>
-                    <li><a href="user/feedback"><i class="glyphicon glyphicon-comment usercenter-i" ></i><span>帮助与反馈</span></a></li>
-                    <li><a href="user/loginOut"><i class="glyphicon glyphicon-log-out usercenter-i" ></i><span>退出</span></a></li>
+                    <li><a href="user/personal"><i
+                            class="glyphicon glyphicon-home usercenter-i"></i><span>我的主页</span></a></li>
+                    <li><a href="user/setup"><i class="glyphicon glyphicon-cog usercenter-i"></i><span>设置</span></a>
+                    </li>
+                    <li><a href="user/feedback"><i
+                            class="glyphicon glyphicon-comment usercenter-i"></i><span>帮助与反馈</span></a></li>
+                    <li><a href="user/loginOut"><i class="glyphicon glyphicon-log-out usercenter-i"></i><span>退出</span></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -88,29 +93,46 @@
 <!--内容-->
 <div class="container">
     <div class="wrap" id="wrap">
-        <div class="edit-share" th:if="${session.session_user_key != null}">
 
-            <div class="share-title-div">
-                <label for="share-title" style="float: left">标题</label>
-                <input type="text" class="form-control" id="share-title" style="width: 60%;float: left" >
+        <div class="panel-heading col-sm-12" style="text-align: left;padding-top: 20px">
+            <i class="glyphicon glyphicon-pencil" style="color: #EC6D51"></i> <label>写分享</label>
+            <hr>
+        </div>
+        <div class="edit-share" th:if="${session.session_user_key != null}">
+            <!--标题-->
+            <div class="share-title-div" >
+                <label class="col-sm-1" data-container="body" data-toggle="popover" id="share-title-label"
+                       data-placement="left" data-content="标题不能为空哦~！" >标题</label>
+                <input type="text" class="col-sm-10 form-control" id="share-title" style="width: 60%;">
                 <input type="hidden" id="userId" th:value="${session.session_user_key.userId}">
             </div>
-
-            <div class="share-richtext-div" style="clear: both">
+            <!--内容-->
+            <div class=" form-group" style="clear: both">
                 <!--富文本编辑器-->
-                <span> 内容 </span>
-                <div id="editor-container" class="container"  onchange="setContent()">
+                <label class="col-xs-1" data-container="body" data-toggle="popover" id="share-content-label"
+                       data-placement="left" data-content="内容不能为空哦~！"> 内容 </label>
+                <div class="col-sm-11 share-richtext-div" style="padding-left: 0px;padding-right: 0px">
+                    <div id="editor-container" class="container" onchange="setContent()">
+                    </div>
                 </div>
+
             </div>
+            <!--标签-->
             <div class="share-tag-div">
-                <label for="share-tag" style="float: left">标签 </label>
-                <input type="text" class="form-control" id="share-tag" style="width: 60%;float: left" >
+                <label class="col-sm-1" data-container="body" data-toggle="popover" id="share-tag-label"
+                       data-placement="left" data-content="标签不能为空哦~！" >标签</label>
+                <input type="text" id="share-tag" value="" data-role="tagsinput" placeholder="点击添加标签" size="1">
+                <p class="text-muted" style="margin-left: 125px;font-size: 12px">提示：回车添加标签，最少两个字最多6个字，最多添加四个标签</p>
             </div>
+            <!--按钮-->
+
             <div class="share-button-div">
-                <button type="button" class="btn btn-default" id="publish-button"> 发布</button>
+                <button type="button" class="btn btn-default" id="publish-button">发布</button>
             </div>
+
         </div>
-        <div th:if="${session.session_user_key == null}" class="show-login-tip">
+
+        <div th:if="${session.session_user_key == null}" class="show-login-tip col-sm-12" id="show-login-tip">
             请先登录吧！
         </div>
     </div>

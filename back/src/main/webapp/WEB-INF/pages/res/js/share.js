@@ -3,9 +3,23 @@
  */
 
 $(document).ready(function () {
+
+    var width = window.screen.height;
+    $(".show-login-tip").css("min-height",width);
+
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+
     var editor = new wangEditor('editor-container');
     // 阻止输出log
     wangEditor.config.printLog = false;
+
+    $("#share-tag").tagsinput({
+        maxTags: 4,//标签数
+        maxChars: 6,//最大字符数
+        trimValue: true,//去除空格
+    });
 
     $(function () {
         //图片上传地址
@@ -27,22 +41,51 @@ $(document).ready(function () {
         editor.create();
     });
 
-    //提交
+
+   // 隐藏提示框
+    $("#share-title").click(function () {
+        $("#share-title-label").popover('hide');
+    });
+    $("#editor-container").click(function () {
+        $("#share-content-label").popover('hide');
+    });
+
+    $(".share-tag-div").click(function () {
+        $("#share-tag-label").popover('hide');
+    });
+
+    //发布分享
     $("#publish-button").click(function () {
+        $("#share-title-label").popover('hide');
+        $("#share-content-label").popover('hide');
+        $("#share-tag-label").popover('hide');
         var title = $("#share-title").val();
         var tag = $("#share-tag").val();
         var userId = $("#userId").val();
+        var tags = $("#share-tag").val();
+
+
         //去除空格
         var content = $("#editor-container").html();
-        content = $.trim(content);
-        console.log(content);
 
+        // 获取编辑器纯文本内容
+        var text = editor.$txt.text();
+        content = $.trim(content);
+        // 没有编辑标题
         if(title == ''){
-            $("#share-title").attr("placeholder","标题不能为空");
+            $("#share-title-label").popover('show');
+            // $("#share-title").attr("placeholder","标题不能为空");
             return;
         }
-        if(tag == ''){
-            $("#share-tag").attr("placeholder","标签不能为空");
+        // 没有编辑内容
+        if($.trim(text)==''){
+            $("#share-content-label").popover('show');
+            return;
+        }
+        // 没有添加标签
+        if(tags == ''){
+            $("#share-tag-label").popover('show');
+            // $("#share-tag").attr("placeholder","标签不能为空");
             return;
         }
         $.ajax({

@@ -1,54 +1,60 @@
-.edit-share{
+.edit-share {
     float: left;
     width: 100%;
     min-height: 800px;
     margin-bottom: 5px;
 }
-.preview-share{
+
+.preview-share {
     float: right;
-    border:1px solid gainsboro;
+    border: 1px solid gainsboro;
     width: 50%;
     min-height: 800px;
     margin-bottom: 5px;
     border: 1px solid gainsboro;
     display: none;
 }
+
 a {
     text-decoration: none;
 }
+
 .wrap {
     margin-top: 10px;
 }
-.share-title-div{
+.share-title-div {
     margin-bottom: 10px;
     height: 50px;
     clear: both;
 }
-.share-richtext-div{
 
+.share-richtext-div {
+    margin-bottom: 30px;
 }
-#share-title{
+
+#share-title {
     border: 0px;
     border-bottom: 1px solid gainsboro;
 }
-#share-tag{
+
+#share-tag {
     border: 0px;
     border-bottom: 1px solid gainsboro;
 }
 
-.share-tag-div{
-    position: relative;
-    margin-top: 20px;
-
+.share-tag-div {
+    height: 50px;
+    clear: both;
 }
-.share-button-div{
+
+.share-button-div {
     position: relative;
     margin-top: 100px;
     width: inherit;
     text-align: center;
 }
 
-#publish-button{
+#publish-button {
     width: 40%;
     background: gainsboro;
 }
