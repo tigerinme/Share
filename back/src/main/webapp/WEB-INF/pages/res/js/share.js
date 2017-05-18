@@ -53,7 +53,8 @@ $(document).ready(function () {
     $(".share-tag-div").click(function () {
         $("#share-tag-label").popover('hide');
     });
-
+    //隐藏错误提示框
+    $("#errorTipDiv").hide();
     //发布分享
     $("#publish-button").click(function () {
 
@@ -78,6 +79,10 @@ $(document).ready(function () {
         if($.trim(text)==''){
             $("#share-content-label").popover('show');
             return;
+        }else if($.trim(text).length>500){
+            text = $.trim(text).substring(0,500)+"...";
+        }else{
+            text  = $.trim(text)+"...";
         }
         // 没有添加标签
         if(tags == ''){
@@ -88,17 +93,18 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: './share/addShare',
-            data: 'title=' + title + '&content=' + encodeURIComponent(content)+'&tags='+tags +'&userId='+userId,
+            data: 'title=' + title + '&content=' + encodeURIComponent(content)+'&tags='+tags +'&userId='+userId+"&summary="+text,
             success: function (data) {
                 if (data.status == 0) { //添加失败
-
+                    $("#errorTipDiv").show();
+                   $("#errorTip").text(data.info);
                 }else{
                      //跳转到我的主页
-                    alert(data.status);
+                    document.location.href = './user/personal';
                 }
             },
             error: function () {
-
+                 $("#errorTip").text("您的网络连接可能有问题 ");
             }
         });
     });

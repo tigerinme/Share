@@ -36,10 +36,10 @@ public class ShareController {
     public Result addShare(String title,
                            String content,
                            String tags,
-                           Integer userId) throws UnsupportedEncodingException {
-
-        content = URLDecoder.decode(content,"UTF-8");
-        Integer count = shareService.addShare(title, content, tags, userId);
+                           Integer userId,
+                           String summary){
+        //todo 正则表达式匹配content获取图片，第一下载，第二设置列表页图片展示
+        Integer count = shareService.addShare(title, content, tags, userId,summary);
         if(null != count && count>0){
             return new Success("添加成功");
         }else {

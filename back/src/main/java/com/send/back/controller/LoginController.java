@@ -103,10 +103,10 @@ public class LoginController extends  BaseController{
             Date date=new Date();
             payload.put("uid", userLogin.getId());//用户id
             payload.put("iat", date.getTime());//生成时间
-            payload.put("ext",date.getTime()+1000*60*60);//过期时间1小时
+            payload.put("ext",date.getTime()+1000*60*60*24);//过期时间1小时
             String token= TokenUtil.createToken(payload);
             Cookie cookie=new Cookie("token", token);
-            cookie.setMaxAge(3600);
+            cookie.setMaxAge(60*60*24);
             cookie.setPath("/");
             response.addCookie(cookie);
             //生成session

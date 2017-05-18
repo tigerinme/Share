@@ -15,7 +15,7 @@ public class ShareServiceImpl implements ShareService {
     @Autowired
     private ShareMapper shareMapper;
     @Override
-    public Integer addShare(String title, String content, String tags, Integer userId) {
+    public Integer addShare(String title, String content, String tags, Integer userId,String summary) {
 //        处理标签
         if(StringUtils.isNotBlank(tags) && tags.contains(",")) {
            String[] tagArr = tags.split(",");
@@ -25,6 +25,6 @@ public class ShareServiceImpl implements ShareService {
         }else{
             shareMapper.insertTag(tags);
         }
-        return shareMapper.addShare(title,content,tags,userId);
+        return shareMapper.addShare(title,content,tags,userId,summary);
     }
 }

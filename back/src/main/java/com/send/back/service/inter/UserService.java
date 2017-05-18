@@ -3,7 +3,10 @@ package com.send.back.service.inter;
 
 
 import com.send.back.domain.response.Result;
+import com.send.back.domain.share.Share;
 import com.send.back.domain.user.UserLogin;
+
+import java.util.List;
 
 
 public interface UserService {
@@ -55,7 +58,20 @@ public interface UserService {
 
     /**
      * 更新用户登录Ip和登录时间
+     *
      * @param ip
      */
     void updateLastLoginInfo(String ip, Integer id);
+
+    /**
+     * 功能描述：查询我的分享
+     *
+     * @param page
+     * @return
+     * @author 董森
+     * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
+     * @since 2017/5/18
+     */
+    List<Share> getMyShare(Integer page, Integer userId);
 }
+
