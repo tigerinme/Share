@@ -4,6 +4,8 @@ package com.send.back.dao;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 public interface ShareMapper {
 
     /**
@@ -23,4 +25,8 @@ public interface ShareMapper {
                   @Param("content") String content,
                   @Param("tags") String tags,
                   @Param("userId") Integer userId);
+
+
+    @Insert({"INSERT INTO share_tags (tag) SELECT #{tag} FROM DUAL WHERE NOT EXISTS (SELECT tag FROM share_tags WHERE tag LIKE CONCAT('%',#{tag},'%') )"})
+    void insertTag(String tag);
 }
