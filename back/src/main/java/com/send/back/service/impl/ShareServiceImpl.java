@@ -13,7 +13,7 @@ public class ShareServiceImpl implements ShareService {
     @Autowired
     private ShareMapper shareMapper;
     @Override
-    public Integer addShare(String title, String content, Integer tag, Integer userId) {
-        return shareMapper.addShare(title,content,tag,userId);
+    public Integer addShare(String title, String content, String tags, Integer userId) {
+        return shareMapper.addShare(title,content,tags,userId);
     }
 }

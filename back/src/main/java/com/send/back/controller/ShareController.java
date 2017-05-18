@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 @Controller
@@ -22,7 +23,7 @@ public class ShareController {
     /**
     * 功能描述：添加分享
     * @param title
-    * @param tag
+    * @param tags
     * @param content
     * @param userId
     * @return
@@ -34,10 +35,12 @@ public class ShareController {
     @RequestMapping("addShare")
     public Result addShare(String title,
                            String content,
-                           Integer tag,
-                           Integer userId) {
-        System.out.println(URLDecoder.decode(content));
-        Integer count = shareService.addShare(title, URLDecoder.decode(content), tag, userId);
+                           String tags,
+                           Integer userId) throws UnsupportedEncodingException {
+
+        content = URLDecoder.decode(content,"UTF-8");
+
+        Integer count = shareService.addShare(title, content, tags, userId);
         if(null != count && count>0){
             return new Success("添加成功");
         }else {

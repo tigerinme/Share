@@ -56,11 +56,8 @@ $(document).ready(function () {
 
     //发布分享
     $("#publish-button").click(function () {
-        $("#share-title-label").popover('hide');
-        $("#share-content-label").popover('hide');
-        $("#share-tag-label").popover('hide');
+
         var title = $("#share-title").val();
-        var tag = $("#share-tag").val();
         var userId = $("#userId").val();
         var tags = $("#share-tag").val();
 
@@ -91,7 +88,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: './share/addShare',
-            data: 'title=' + title + '&content=' + encodeURIComponent(encodeURIComponent(content))+'&tag='+tag +'&userId='+userId,
+            data: 'title=' + title + '&content=' + encodeURIComponent(content)+'&tags='+tags +'&userId='+userId,
             success: function (data) {
                 if (data.status == 0) { //添加失败
 

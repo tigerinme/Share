@@ -16,5 +16,5 @@ public interface ShareService {
     * @since 2017/5/15
     * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
     */
-    Integer addShare(String title,String content,Integer tag,Integer userId );
+    Integer addShare(String title,String content,String tags,Integer userId );
 }
