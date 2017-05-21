@@ -88,7 +88,7 @@ public class Share {
 
     private List<String> tagList;
 
-    private String showTime;
+
     public Integer getId() {
         return id;
     }
@@ -215,14 +215,6 @@ public class Share {
 
     public void setThumbDownCount(Integer thumbDownCount) {
         this.thumbDownCount = thumbDownCount;
-    }
-
-    public String getShowTime() {
-        return showTime;
-    }
-
-    public void setShowTime(String showTime) {
-        this.showTime = showTime;
     }
 
     public String getSummary() {
