@@ -44,7 +44,7 @@ public class UserController {
     * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
     */
     @ResponseBody
-    @RequestMapping("myShare")
+    @RequestMapping("getMyShare")
     public Result getMyShare(Integer page,
                              Integer userId){
         if(null !=page && null != userId) {
