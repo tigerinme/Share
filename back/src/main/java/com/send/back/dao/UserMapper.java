@@ -88,10 +88,11 @@ public interface UserMapper {
      * @since 2017/5/18
      */
     @Select({" SELECT ",
-            " sc.id,sc.user_id AS userId,ui.nickname,title,content,tags,sc.create_time, ",
+            " sc.id,sc.user_id AS userId,ui.nickname," ,
+                    "title,content,tags,sc.create_time as createTime, ",
             " sc.can_comment AS canComment, ",
-            "sc.summary",
-            "sc.img",
+            "sc.summary,",
+            "sc.img,",
             " sc.can_public AS canPublic, ",
             " ss.view_count as viewCount, ",
             " ss.comment_count as commentCount, ",
@@ -107,7 +108,7 @@ public interface UserMapper {
             " WHERE",
             " sc.user_id =#{userId}",
             " limit #{beginIndex} ,#{pageSize}"})
-    List<Share> getMyShare(@Param("userId") Integer userId,
-                           @Param("beginIndex") Integer beginIndex,
-                           @Param("pageSize") Integer pageSize);
+    List<Share> getMyShare(@Param("beginIndex") Integer beginIndex,
+                           @Param("pageSize") Integer pageSize,
+                           @Param("userId") Integer userId);
 }

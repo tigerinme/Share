@@ -58,7 +58,7 @@ i{
     text-align: center;
 }
 .meta-block{
-    font-size: 5px;
+    font-size: 10px;
     margin-right: 5px;
     /*width: 45px;*/
     border-right: 1px solid #f0f0f0;
@@ -72,7 +72,7 @@ i{
 
 }
 .info ul li{
-    float: left;
+    float: right;
     /*width: 40px;*/
 }
 .content-operator{

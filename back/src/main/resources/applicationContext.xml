@@ -20,6 +20,11 @@
     <!-- spring 2.5之后，读取外部配置文件-->
     <context:property-placeholder location="classpath*:/jdbc.properties"></context:property-placeholder>
 
+
+
+
+
+
     <!-- 1. 数据源  -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="${driver}"/>
