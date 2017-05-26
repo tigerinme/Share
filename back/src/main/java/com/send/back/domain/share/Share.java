@@ -17,6 +17,13 @@ public class Share {
      * id
      */
     private Integer id;
+
+    /**
+     * 用户头像
+     */
+    private String avatar;
+
+
     /**
      * 标题
      */
@@ -239,5 +246,13 @@ public class Share {
 
     public void setTagList(List<String> tagList) {
         this.tagList = tagList;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

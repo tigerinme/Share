@@ -30,8 +30,6 @@
 </head>
 <body style="padding: 0px;margin: 0px">
 <div class="header-div">
-
-
     <div class="index-header">
         <div class="logo">
             <a href="#" style="text-decoration: none">
@@ -54,6 +52,7 @@
         </div>
         <!--session存在-->
         <div class="userlogin" th:if="${session.session_user_key == null}">
+
             <a href="user/goToLogin?type=0&from=0" target="_parent" style="text-decoration: none">
                 <span name="">登录</span>
             </a>
@@ -85,132 +84,142 @@
         </div>
 
 
+        </input>
     </div>
-</div>
-<!--内容-->
-<div class="container">
-    <div class="wrap" id="wrap">
-        <div class="sidebar" style="text-align: left">
-            <div class="sidebar-avatar-div">
-                <img src="../res/img/avatar.png" class="sidebar-avatar">
-                <span th:if="${session.session_user_key != null}" th:text="${session.session_user_key.username}"></span>
-            </div>
-            <div class="info">
-                <ul>
-                    <li>
-                        <div class="meta-block">
-                            <p>0</p>
-                            关注
-                        </div>
-                    </li>
-                    <li>
-                        <div class="meta-block">
-                            <p>1</p>
-                            粉丝
-                        </div>
-                    </li>
-                    <li>
-                        <div class="meta-block">
-                            <p>0</p>
-                            分享
-                        </div>
-                    </li>
-                    <li>
-                        <div class="meta-block">
-                            <p>10000</p>
-                            <div>收获点赞</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="meta-block">
-                            <p>0</p>
-                            <div>收获喜欢</div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-            <hr>
-            <div class="sidebar-operator">
-                <ul class="list-group" style="margin-top: 20px">
-                    <li class="list-group-item">
-                        <a>
-                            <i class="fa fa-rss"></i>
-                            <span>动态</span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="">
-                            <i class="fa fa-share"></i>
-                            <span>我的分享</span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a>
-                            <i class="fa fa-file"></i>
-                            <span>我的收藏</span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a>
-                            <i class="fa fa-comment"></i>
-                            <span>我的评论</span>
-                        </a>
-                    </li>
-                </ul>
 
-                <ul class="list-group">
+    <!--内容-->
+    <div class="container">
+        <div class="wrap" id="wrap">
+            <div class="sidebar" style="text-align: left">
+                <div class="sidebar-avatar-div">
+                    <img src="../res/img/avatar.png" class="sidebar-avatar">
+                    <span th:if="${session.session_user_key != null}"
+                          th:text="${session.session_user_key.username}"></span>
+                </div>
+                <div class="info">
+                    <ul>
+                        <li>
+                            <div class="meta-block">
+                                <p>0</p>
+                                关注
+                            </div>
+                        </li>
+                        <li>
+                            <div class="meta-block">
+                                <p>1</p>
+                                粉丝
+                            </div>
+                        </li>
+                        <li>
+                            <div class="meta-block">
+                                <p>0</p>
+                                分享
+                            </div>
+                        </li>
+                        <li>
+                            <div class="meta-block">
+                                <p>10000</p>
+                                <div>收获点赞</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="meta-block">
+                                <p>0</p>
+                                <div>收获喜欢</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="sidebar-operator">
+                    <ul class="list-group" style="margin-top: 20px">
+                        <li class="list-group-item">
+                            <a>
+                                <i class="fa fa-rss"></i>
+                                <span>动态</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#" id="goGetMyShare">
+                                <i class="fa fa-share"></i>
+                                <span>我的分享</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a>
+                                <i class="fa fa-file"></i>
+                                <span>我的收藏</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a>
+                                <i class="fa fa-comment"></i>
+                                <span>我的评论</span>
+                            </a>
+                        </li>
+                    </ul>
 
-                    <li class="list-group-item">
-                        <a>
-                            <i class="fa fa-heart"></i>
-                            <span>喜欢</span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a>
-                            <i class="fa fa-eye"></i>
-                            <span>关注</span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a>
-                            <i class="fa fa-users"></i>
-                            <span>粉丝</span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a>
-                            <i class="glyphicon glyphicon-thumbs-up"></i>
-                            <span>点赞</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a>
-                            <i class="glyphicon glyphicon-bell"></i>
-                            <span>消息</span>
-                        </a>
-                    </li>
-                </ul>
+                    <ul class="list-group">
+
+                        <li class="list-group-item">
+                            <a>
+                                <i class="fa fa-heart"></i>
+                                <span>喜欢</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a>
+                                <i class="fa fa-eye"></i>
+                                <span>关注</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a>
+                                <i class="fa fa-users"></i>
+                                <span>粉丝</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item">
+                            <a>
+                                <i class="glyphicon glyphicon-thumbs-up"></i>
+                                <span>点赞</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a>
+                                <i class="glyphicon glyphicon-bell"></i>
+                                <span>消息</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-operator">
+                    <input type="hidden" th:if="${session.session_user_key != null}" th:value="${session.session_user_key.userId}" id="userId">
+                    <input type="hidden" id="page" value="1">
+                    <ul>
+                        <li>
+                            我的分享
+                        </li>
+                    </ul>
+
+                </div>
+                <div>
+                    <ul class="share-list" id="share-container">
+
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="content">
-           <div class="content-operator">
-               <ul>
-                   <li>
-                        我的分享
-                   </li>
-               </ul>
-           </div>
+    </div>
+    <div class="footer-div">
+        <div class="index-footer">
+            公共底部显示区域
         </div>
     </div>
-</div>
-<div class="footer-div">
-    <div class="index-footer">
-        公共底部显示区域
-    </div>
-</div>
 </body>
 </html>
