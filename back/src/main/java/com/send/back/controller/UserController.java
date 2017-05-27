@@ -63,7 +63,11 @@ public class UserController {
             }
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("shareList",shareListPersonalDTOS);
-            jsonObject.put("nextPage",page+1);
+            if(shareListPersonalDTOS.size()>0){
+                jsonObject.put("nextPage",page+1);
+            }else{
+                jsonObject.put("nextPage",page);
+            }
             return new Success("查询成功",jsonObject );
         }else{
             return new Failed("查询我的分享:参数错误");

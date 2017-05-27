@@ -1,8 +1,7 @@
-a {
+a{
     text-decoration: none;
     color: grey;
 }
-
 /*a:hover {*/
     /*text-decoration: none;*/
 /*}*/
@@ -18,6 +17,7 @@ a {
 .wrap {
     margin-top: 10px;
     color: rebeccapurple;
+    min-width: 800px;
 }
 
 .sidebar {
@@ -25,7 +25,6 @@ a {
     width: 20%;
     margin-left: 5px;
     margin-bottom: 5px;
-
 }
 
 .content {
@@ -116,7 +115,8 @@ ul {
 }
 
 .share-box {
-    border-bottom: 1px dotted gainsboro;
+    border-bottom: 1px solid gainsboro;
+    min-width: 500px;
 }
 
 .avatar {
@@ -167,4 +167,43 @@ ul {
 }
 .abstract{
     color: black;
+}
+.share-list .meta{
+    padding-right: 0!important;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.share-list .collection-tag{
+    padding: 2px 6px;
+    color: #ea6f5a!important;
+    border: 1px solid rgba(236,97,73,.7);
+    border-radius: 3px;
+    margin-right: 10px;
+}
+.share-list .meta i{
+    color: grey;
+}
+#view-more-button{
+    margin-top: 10px;
+    margin-left: 10%;
+    width: 80%;
+    background-color: #E87E51;
+}
+.have-img{
+    float: left;
+}
+.share-single-image{
+    width: 150px;
+    height:130px;
+}
+#share-ul-div ul li{
+    position: relative;
+    width: 100%;
+    margin: 0 0 17px;
+    padding: 0 2px 17px 0;
+    border-bottom: 1px solid #f0f0f0;
+    word-wrap: break-word;
+
 }
