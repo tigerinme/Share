@@ -79,8 +79,8 @@ $(document).ready(function () {
         if($.trim(text)==''){
             $("#share-content-label").popover('show');
             return;
-        }else if($.trim(text).length>500){
-            text = $.trim(text).substring(0,500)+"...";
+        }else if($.trim(text).length>200){
+            text = $.trim(text).substring(0,200)+"...";
         }else{
             text  = $.trim(text)+"...";
         }
