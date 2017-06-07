@@ -99,9 +99,11 @@
                     <div class="name">
                         <a class='blue-link' target="_blank" href="" th:text="${share.nickname}"></a></br>
                         <span class="time" th:text="${share.createTime}"></span>
-                        <span>阅读</span> <span class="view" th:text="${share.viewCount}"> </span>
-                        <span>评论</span><span class="comment" th:text="${share.commentCount}"> </span>
-                        <span>喜欢</span> <span class="like" th:text="${share.likeCount}"> </span>
+                       &nbsp;&nbsp;&nbsp; <span>阅读</span> <span class="view" th:text="${share.viewCount}"> </span>
+                        &nbsp;&nbsp;<span>评论</span><span class="comment" th:text="${share.commentCount}"> </span>
+                        &nbsp;&nbsp;<span>分享</span><span class="comment" th:text="${share.shareCount}"> </span>
+                        &nbsp;&nbsp;<span>收藏</span><span class="comment" th:text="${share.collectionCount}"> </span>
+                        &nbsp;&nbsp;<span>喜欢</span> <span class="like" th:text="${share.likeCount}"> </span>
                     </div>
                 </div>
                 <hr>
@@ -130,7 +132,7 @@
             </div>
             <!--显示广告推荐等-->
             <div class="sidebar">
-
+                 侧边栏
             </div>
         </div>
     </div>
