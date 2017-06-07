@@ -74,4 +74,20 @@ public class UserController {
         }
     }
 
+    /**
+    * 功能描述：跳转到单独分享页面
+    * @param shareId
+    * @return
+    * @author 董森
+    * @since 2017/6/7
+    * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
+    */
+    @RequestMapping("goToSingleShare")
+    public ModelAndView goToSingleShare(Integer shareId){
+        ModelAndView modelAndView = new ModelAndView("user/singleShare");
+        Share share = userService.getSingleShare(shareId);
+        modelAndView.addObject("share",share);
+        return  modelAndView;
+    }
+
 }

@@ -45,6 +45,7 @@ $(document).ready(function () {
                         $("#share-container").append("<li>" +
                             "<div class='share-box'>" +
                             "<div id='share-c" + shares[i].id + "'>" +
+                                // 跳转到用户主页
                                    "<div class='author' id='author" + shares[i].id + "'>" +
                                           "<a class='avatar' target='_blank' href=''><img  src='../res/img/avatar.png' alt='96'></a>" +
                                               "<div class='name'>" +
@@ -52,19 +53,24 @@ $(document).ready(function () {
                                                    "<span class='time' data-shared-at='2017-05-26T13:59:38+08:00'>&nbsp;&nbsp;&nbsp;&nbsp;" + shares[i].createTime + "</span>" +
                                               "</div>" +
                                     "</div>" +
-                                   "<a class='title' target='_blank' href='/p/36b28ed1f3c7'>" + shares[i].title + "</a>" +
+                                   // 跳转到单独分享页面
+                                   "<a class='title' target='_blank' href='../user/goToSingleShare?shareId="+shares[i].id+"'>" + shares[i].title + "</a>" +
+                                  // 摘要
                                    " <p class='abstract' style='margin-left: 5px'>" + shares[i].summary +"</p>"+
                                  "<div class='share-i' id='share-i" + shares[i].id + "' ></div>" +
                             "</div>"+
+                           // 清除浮动
                             "<div class='clearfix'></div>"+
                             "<div class='meta' id='meta" + shares[i].id + "'></div></li>");
+                        // 图片
                         if(shares[i].img != '' && shares[i].img != null){
                             $("#author"+ shares[i].id).append("<img style='float: right;margin-top: 20px' class='share-single-image' src='"+shares[i].img+"'>")
                         }
+                        // 标签
                         for (var j = 0; j < tags.length; j++) {
                             $("#meta" + shares[i].id).append("<a class='collection-tag' target='_blank' href=''>" + tags[j] + "</a>");
                         }
-
+                        // 统计数据
                         $("#meta" + shares[i].id).append(
                             "<a target='_blank' href=''>" +
                             "<i class='fa fa-eye'>&nbsp;&nbsp;" + shares[i].viewCount + "</i>" +

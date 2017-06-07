@@ -112,4 +112,30 @@ public interface UserMapper {
     List<Share> getMyShare(@Param("beginIndex") Integer beginIndex,
                            @Param("pageSize") Integer pageSize,
                            @Param("userId") Integer userId);
+
+
+    @Select({" SELECT" ,
+            "            sc.id,sc.user_id AS userId,ui.nickname," ,
+            "                    title,content,tags,sc.create_time as createTime," ,
+            "            sc.can_comment AS canComment,",
+            "            sc.summary," ,
+            "            sc.img,",
+            "            IFNULL(sc.can_public,0) AS canPublic," ,
+            "             IFNULL(ss.view_count,0) as viewCount," ,
+            "             IFNULL(ss.comment_count,0) as commentCount," ,
+            "             IFNULL(ss.like_count,0) as likeCount," ,
+            "            IFNULL(ss.share_count,0) as shareCount," ,
+            "            IFNULL(ss.thumbup_count,0) as thumbUpCount,",
+            "             IFNULL(ss.collection_count,0) as collectionCount," ,
+            "             IFNULL(ss.thumbdown_count,0) as thumbDownCount," ,
+            "             ui.avatar as avatar" ,
+            "             FROM" ,
+            "             share_content sc",
+            "             LEFT JOIN share_statistics ss ON ss.content_id = sc.id",
+            "             LEFT JOIN user_info ui on sc.user_id = ui.user_id",
+            "            WHERE" ,
+            "             sc.id=#{shareId}"})
+    Share getSingleShare(Integer shareId);
+
+
 }

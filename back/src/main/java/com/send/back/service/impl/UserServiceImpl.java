@@ -162,4 +162,12 @@ public class UserServiceImpl implements UserService {
         }
         return shareLists;
     }
+
+    @Override
+    public Share getSingleShare(Integer shareId) {
+        Share  share = userMapper.getSingleShare(shareId);
+        return share;
+    }
+
+
 }

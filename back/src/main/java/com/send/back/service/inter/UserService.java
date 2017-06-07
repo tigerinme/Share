@@ -73,5 +73,16 @@ public interface UserService {
      * @since 2017/5/18
      */
     List<Share> getMyShare(Integer page, Integer userId);
+
+    /**
+    * 功能描述：获取单个分享内容
+    * @param shareId
+    * @return Share
+    * @author 董森
+    * @since 2017/6/7
+    * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
+    */
+    Share getSingleShare(Integer shareId);
+
 }
 

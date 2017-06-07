@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>乐享 - 快乐源于分享</title>
+    <meta name="Keywords" content="乐享">
+    <!--<base href="/back/">-->
+    <meta name="Description" content="乐享 - 快乐源于分享">
+
+    <script type="text/javascript" src="../res/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../res/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../res/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../res/js/index-header.js"></script>
+    <script type="text/javascript" src="../res/js/singleShare.js"></script>
+
+    <link rel="stylesheet" href="../res/css/index-footer.css">
+    <link rel="stylesheet" href="../res/css/index-header.css">
+    <link rel="stylesheet" href="../res/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../res/css/singleShare.css">
+    <link rel="stylesheet" href="../res/css/font-awesome.min.css">
+    <style>
+        .container {
+            width: 75%;
+            height: 450px;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
+</head>
+<body style="padding: 0px;margin: 0px">
+<div class="header-div">
+    <div class="index-header">
+        <div class="logo">
+            <a href="#" style="text-decoration: none">
+                <span class="name">乐享</span>
+            </a>
+        </div>
+        <div class="discover">
+            <a href="#" style="text-decoration: none">
+                <span class="name">发现</span>
+            </a>
+        </div>
+        <div class="search">
+            <input type="text" class="search-input" id="search-input" placeholder="搜索你感兴趣的内容......">
+        </div>
+        <!--写分享-->
+        <div class="share">
+            <a href="../user/goToShare" style="text-decoration: none">
+                <span class="name">添加分享</span>
+            </a>
+        </div>
+        <!--session存在-->
+        <div class="userlogin" th:if="${session.session_user_key == null}">
+
+            <a href="user/goToLogin?type=0&from=0" target="_parent" style="text-decoration: none">
+                <span name="">登录</span>
+            </a>
+            <a href="user/goToLogin?type=1&from=0" target="_parent" style="text-decoration: none">
+                <span name="">注册</span>
+            </a>
+        </div>
+        <!--用户中心-->
+        <div class="usercenter" th:if="${session.session_user_key != null}">
+            <div class="userinfo">
+                <a>
+                    <img src="../res/img/avatar.png" class="avatar">
+                </a>
+                <p th:if="${session.session_user_key != null}" th:text="${session.session_user_key.username}"
+                   class="usercenter-username">
+            </div>
+            <div class="useroperator">
+                <ul>
+                    <li><a href="../user/personal"><i
+                            class="glyphicon glyphicon-home usercenter-i"></i><span>我的主页</span></a></li>
+                    <li><a href="../user/setup"><i class="glyphicon glyphicon-cog usercenter-i"></i><span>设置</span></a>
+                    </li>
+                    <li><a href="../user/feedback"><i
+                            class="glyphicon glyphicon-comment usercenter-i"></i><span>帮助与反馈</span></a></li>
+                    <li><a href="../user/loginOut"><i
+                            class="glyphicon glyphicon-log-out usercenter-i"></i><span>退出</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        </input>
+    </div>
+
+    <!--内容-->
+    <div class="container">
+        <div class="wrap" id="wrap">
+            <div class="content">
+
+            </div>
+            <div class="sidebar">
+            </div>
+        </div>
+    </div>
+    <div class="footer-div">
+        <div class="index-footer">
+            公共底部显示区域
+        </div>
+    </div>
+</div>
+</body>
+</html>
