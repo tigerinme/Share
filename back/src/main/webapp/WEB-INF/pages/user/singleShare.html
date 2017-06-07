@@ -89,10 +89,48 @@
     <!--内容-->
     <div class="container">
         <div class="wrap" id="wrap">
+            <!--显示内容-->
             <div class="content">
+                <!--标题-->
+                <h3 th:text="${share.title}" style="text-align: center"></h3>
+                <!--作者信息-->
+                <div class="author">
+                    <a class="avatar" target="_blank" href=""><img src="../res/img/avatar.png"></a>
+                    <div class="name">
+                        <a class='blue-link' target="_blank" href="" th:text="${share.nickname}"></a></br>
+                        <span class="time" th:text="${share.createTime}"></span>
+                        <span>阅读</span> <span class="view" th:text="${share.viewCount}"> </span>
+                        <span>评论</span><span class="comment" th:text="${share.commentCount}"> </span>
+                        <span>喜欢</span> <span class="like" th:text="${share.likeCount}"> </span>
+                    </div>
+                </div>
+                <hr>
+                <!--分享信息-->
+                <div th:utext="${share.content}" id="share-content"></div>
+                <hr>
+                <!--操作-->
+                <div class="operator">
+                    <!--其他-->
+                    <a th:onclick="'javascript:shareOperator(\''+${share.id}+'\',\''+1+'\')'" href="javascript:void(0)">
+                        <i class='fa fa-share'> <span>分享</span></i></a>
+                    <a th:onclick="'javascript:shareOperator(\''+${share.id}+'\',\''+2+'\')'" href="javascript:void(0)">
+                        <i class='fa fa-file'><span>收藏</span></i></a>
+                    <!--修改-->
+                    <a th:onclick="'javascript:shareOperator(\''+${share.id}+'\',\''+3+'\')'" href="javascript:void(0)">
+                        <i class='fa fa-heart' th:text="${share.likeCount}" style="float: right"></i></a>
+                    <a th:onclick="'javascript:shareOperator(\''+${share.id}+'\',\''+4+'\')'" href="javascript:void(0)">
+                        <i class='fa fa-thumbs-down' th:text="${share.thumbDownCount}" style="float: right"></i></a>
+                    <a th:onclick="'javascript:shareOperator(\''+${share.id}+'\',\''+5+'\')'" href="javascript:void(0)">
+                        <i class='fa fa-thumbs-up' th:text="${share.thumbUpCount}" style="float: right"></i></a>
 
+                </div>
+
+                <!--评论-->
+                <div>cmment</div>
             </div>
+            <!--显示广告推荐等-->
             <div class="sidebar">
+
             </div>
         </div>
     </div>
@@ -104,3 +142,9 @@
 </div>
 </body>
 </html>
+<script>
+    function shareOperator(shareId, type) {
+        alert(shareId);
+        alert(type);
+    }
+</script>

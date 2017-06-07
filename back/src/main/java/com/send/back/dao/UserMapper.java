@@ -89,7 +89,7 @@ public interface UserMapper {
      */
     @Select({" SELECT ",
             " sc.id,sc.user_id AS userId,ui.nickname," ,
-                    "title,content,tags,sc.create_time as createTime, ",
+                    "title,content,tags,DATE_FORMAT(sc.create_time,'%Y-%m-%d %H:%i:%S') as createTime, ",
             " sc.can_comment AS canComment, ",
             "sc.summary,",
             "sc.img,",
@@ -116,7 +116,7 @@ public interface UserMapper {
 
     @Select({" SELECT" ,
             "            sc.id,sc.user_id AS userId,ui.nickname," ,
-            "                    title,content,tags,sc.create_time as createTime," ,
+            "                    title,content,tags,DATE_FORMAT(sc.create_time,'%Y-%m-%d %H:%i:%S') as createTime," ,
             "            sc.can_comment AS canComment,",
             "            sc.summary," ,
             "            sc.img,",

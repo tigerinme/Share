@@ -89,5 +89,10 @@ public class UserController {
         modelAndView.addObject("share",share);
         return  modelAndView;
     }
+    @ResponseBody
+    @RequestMapping("shareOperator")
+    public void shareOperator(){
+
+    }
 
 }

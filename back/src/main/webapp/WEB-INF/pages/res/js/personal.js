@@ -50,7 +50,7 @@ $(document).ready(function () {
                                           "<a class='avatar' target='_blank' href=''><img  src='../res/img/avatar.png' alt='96'></a>" +
                                               "<div class='name'>" +
                                                    "<a class='blue-link' target='_blank' href=''>&nbsp;&nbsp;&nbsp;&nbsp;" + shares[i].nickname + "</a>" +
-                                                   "<span class='time' data-shared-at='2017-05-26T13:59:38+08:00'>&nbsp;&nbsp;&nbsp;&nbsp;" + shares[i].createTime + "</span>" +
+                                                   "<span class='time' >&nbsp;&nbsp;&nbsp;&nbsp;" + shares[i].createTime + "</span>" +
                                               "</div>" +
                                     "</div>" +
                                    // 跳转到单独分享页面

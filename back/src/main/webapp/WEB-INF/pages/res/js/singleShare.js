@@ -3,5 +3,7 @@ $(document).ready(function () {
         var width = window.screen.height;
         $(".content").css("min-height", width);
         $(".sidebar").css("min-height", width);
+
+
     }
 )
