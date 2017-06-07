@@ -54,7 +54,7 @@ $(document).ready(function () {
                                               "</div>" +
                                     "</div>" +
                                    // 跳转到单独分享页面
-                                   "<a class='title' target='_blank' href='../user/goToSingleShare?shareId="+shares[i].id+"'>" + shares[i].title + "</a>" +
+                                   "<a class='title'  href='../user/goToSingleShare?shareId="+shares[i].id+"'>" + shares[i].title + "</a>" +
                                   // 摘要
                                    " <p class='abstract' style='margin-left: 5px'>" + shares[i].summary +"</p>"+
                                  "<div class='share-i' id='share-i" + shares[i].id + "' ></div>" +
