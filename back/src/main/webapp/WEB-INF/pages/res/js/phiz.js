@@ -110,11 +110,13 @@ define(function(require, exports, module) {
 
         showBox: function(offset) {
             this.box().slideDown("300");
+            // this.box().show();
             this.lnk().hide();
         },
 
         hideBox: function() {
             this.box().slideUp("300");
+            // this.box().hide;
             this.lnk().show();
         }
     };

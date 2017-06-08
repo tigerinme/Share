@@ -14,12 +14,14 @@
     <script type="text/javascript" src="../res/js/index-header.js"></script>
     <script type="text/javascript" src="../res/js/singleShare.js"></script>
     <script type="text/javascript" src="../res/js/sea.js"></script>
+    <script type="text/javascript" src="../res/layer/layer.js"></script>
 
     <link rel="stylesheet" href="../res/css/index-footer.css">
     <link rel="stylesheet" href="../res/css/index-header.css">
     <link rel="stylesheet" href="../res/css/bootstrap.min.css">
     <link rel="stylesheet" href="../res/css/singleShare.css">
     <link rel="stylesheet" href="../res/css/font-awesome.min.css">
+
     <style>
         .container {
             width: 75%;
@@ -134,11 +136,9 @@
                     <div class="chat_other">
                         <h4>全部评论: <i id="chat_count">0</i> 条</h4>
                     </div>
-                    <ul id="chat_container" class="its"><li><p>还没有评论, 快来占沙发吧!</p></li></ul>
+
                     <div id="pager" class="text-center"></div>
                     <div class="cbox-wrap">
-                        <div class="cbox-title">我有话说: <span id="chat_reply" style="display:none;">@<i id="chat_to"></i></span>
-                        </div>
                         <div class="cbox-post">
                             <div class="cbox-input">
                                 <textarea id="chat_text" rows="3" placeholder="请输入评论内容"></textarea>
@@ -153,7 +153,7 @@
                                     </ul>
                                 </div>
                                 <div class="ats-issue">
-                                    <button id="btn-chat" class="btn btn-success btn-sm bt">发送</button>
+                                    <button id="btn-chat" class="btn btn-success btn-sm bt" >发送</button>
                                 </div>
                             </div>
                         </div>
@@ -164,6 +164,7 @@
                             </div>
                         </div>
                     </div>
+                    <ul id="chat_container" class="its"><li><p>还没有评论, 快来占沙发吧!</p></li></ul>
                 </div>
 
             </div>
@@ -194,4 +195,5 @@
             phizBoxId:'c-phiz'
         });
     });
+
 </script>
