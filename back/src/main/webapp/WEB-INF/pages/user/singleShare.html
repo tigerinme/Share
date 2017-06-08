@@ -13,6 +13,7 @@
     <script type="text/javascript" src="../res/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="../res/js/index-header.js"></script>
     <script type="text/javascript" src="../res/js/singleShare.js"></script>
+    <script type="text/javascript" src="../res/js/sea.js"></script>
 
     <link rel="stylesheet" href="../res/css/index-footer.css">
     <link rel="stylesheet" href="../res/css/index-header.css">
@@ -128,7 +129,43 @@
                 </div>
 
                 <!--评论-->
-                <div>cmment</div>
+                <hr>
+                <div id="chat" class="chats shadow-box">
+                    <div class="chat_other">
+                        <h4>全部评论: <i id="chat_count">0</i> 条</h4>
+                    </div>
+                    <ul id="chat_container" class="its"><li><p>还没有评论, 快来占沙发吧!</p></li></ul>
+                    <div id="pager" class="text-center"></div>
+                    <div class="cbox-wrap">
+                        <div class="cbox-title">我有话说: <span id="chat_reply" style="display:none;">@<i id="chat_to"></i></span>
+                        </div>
+                        <div class="cbox-post">
+                            <div class="cbox-input">
+                                <textarea id="chat_text" rows="3" placeholder="请输入评论内容"></textarea>
+                                <input type="hidden" value="0" name="chat_pid" id="chat_pid">
+                            </div>
+                            <div class="cbox-ats clearfix">
+                                <div class="ats-func">
+                                    <ul class="func-list">
+                                        <li class="list-b">
+                                            <a href="javascript:void(0);" class="join" id="c-btn"><i class="fa fa-smile-o fa-2"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="ats-issue">
+                                    <button id="btn-chat" class="btn btn-success btn-sm bt">发送</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--表情-->
+                        <div class="phiz-box" id="c-phiz" style="display: none">
+                            <div class="phiz-list" view="c-phizs">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!--显示广告推荐等-->
             <div class="sidebar">
@@ -149,4 +186,12 @@
         alert(shareId);
         alert(type);
     }
+    seajs.use('phiz', function (phiz) {
+        $("#c-btn").jphiz({
+            base:'',
+            textId:'chat_text',
+            lnkBoxId:'c-lnk',
+            phizBoxId:'c-phiz'
+        });
+    });
 </script>
