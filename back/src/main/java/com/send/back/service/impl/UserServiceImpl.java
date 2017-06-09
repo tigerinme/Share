@@ -4,6 +4,7 @@ import com.send.back.dao.UserMapper;
 import com.send.back.domain.response.Failed;
 import com.send.back.domain.response.Result;
 import com.send.back.domain.response.Success;
+import com.send.back.domain.share.Comment;
 import com.send.back.domain.share.Share;
 import com.send.back.domain.user.UserLogin;
 import com.send.back.service.inter.UserService;
@@ -167,6 +168,17 @@ public class UserServiceImpl implements UserService {
     public Share getSingleShare(Integer shareId) {
         Share  share = userMapper.getSingleShare(shareId);
         return share;
+    }
+
+    @Override
+    public Integer addComment(Integer userId, Integer pid,Integer toid, String content) {
+
+        return userMapper.addComment(userId,pid,toid,content);
+    }
+
+    @Override
+    public List<Comment> getCommentList(Integer shareId) {
+        return userMapper.getCommentList(shareId);
     }
 
 

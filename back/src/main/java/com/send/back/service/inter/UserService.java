@@ -3,6 +3,7 @@ package com.send.back.service.inter;
 
 
 import com.send.back.domain.response.Result;
+import com.send.back.domain.share.Comment;
 import com.send.back.domain.share.Share;
 import com.send.back.domain.user.UserLogin;
 
@@ -83,6 +84,30 @@ public interface UserService {
     * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
     */
     Share getSingleShare(Integer shareId);
+
+    /**
+     * 功能描述：添加评论或者回复接口
+     *
+     * @param userId  评论或者回复用户id
+     * @param pid
+     * @param toid
+     * @param content 评论回复内容
+     * @return
+     * @author 董森
+     * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
+     * @since 2017/6/8
+     */
+    Integer addComment(Integer userId,Integer pid,Integer toid,String content);
+
+    /**
+    * 功能描述：获取分享的所有评论
+    * @param
+    * @return
+    * @author 董森
+    * @since 2017/6/9
+    * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
+    */
+    List<Comment> getCommentList(Integer shareId);
 
 }
 

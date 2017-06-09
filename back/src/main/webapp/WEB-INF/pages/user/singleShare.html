@@ -85,8 +85,14 @@
                 </ul>
             </div>
         </div>
-
-        </input>
+        <!--登录用户id-->
+        <input type="hidden" th:if="${session.session_user_key != null}" th:value="${session.session_user_key.userId}" id="userId">
+        <!--当前分享内容id-->
+        <input type="hidden" th:value="${share.id}" id="shareId">
+        <!--评论对象-->
+        <input type="hidden" value="" id="pid">
+        <!--评论内容id-->
+        <input type="hidden" value="" id="toid">
     </div>
 
     <!--内容-->

@@ -1,5 +1,6 @@
 package com.send.back.dao;
 
+import com.send.back.domain.share.Comment;
 import com.send.back.domain.share.Share;
 import com.send.back.domain.user.UserLogin;
 import org.apache.ibatis.annotations.Insert;
@@ -88,8 +89,8 @@ public interface UserMapper {
      * @since 2017/5/18
      */
     @Select({" SELECT ",
-            " sc.id,sc.user_id AS userId,ui.nickname," ,
-                    "title,content,tags,DATE_FORMAT(sc.create_time,'%Y-%m-%d %H:%i:%S') as createTime, ",
+            " sc.id,sc.user_id AS userId,ui.nickname,",
+            "title,content,tags,DATE_FORMAT(sc.create_time,'%Y-%m-%d %H:%i:%S') as createTime, ",
             " sc.can_comment AS canComment, ",
             "sc.summary,",
             "sc.img,",
@@ -114,28 +115,54 @@ public interface UserMapper {
                            @Param("userId") Integer userId);
 
 
-    @Select({" SELECT" ,
-            "            sc.id,sc.user_id AS userId,ui.nickname," ,
-            "                    title,content,tags,DATE_FORMAT(sc.create_time,'%Y-%m-%d %H:%i:%S') as createTime," ,
+    @Select({" SELECT",
+            "            sc.id,sc.user_id AS userId,ui.nickname,",
+            "                    title,content,tags,DATE_FORMAT(sc.create_time,'%Y-%m-%d %H:%i:%S') as createTime,",
             "            sc.can_comment AS canComment,",
-            "            sc.summary," ,
+            "            sc.summary,",
             "            sc.img,",
-            "            IFNULL(sc.can_public,0) AS canPublic," ,
-            "             IFNULL(ss.view_count,0) as viewCount," ,
-            "             IFNULL(ss.comment_count,0) as commentCount," ,
-            "             IFNULL(ss.like_count,0) as likeCount," ,
-            "            IFNULL(ss.share_count,0) as shareCount," ,
+            "            IFNULL(sc.can_public,0) AS canPublic,",
+            "             IFNULL(ss.view_count,0) as viewCount,",
+            "             IFNULL(ss.comment_count,0) as commentCount,",
+            "             IFNULL(ss.like_count,0) as likeCount,",
+            "            IFNULL(ss.share_count,0) as shareCount,",
             "            IFNULL(ss.thumbup_count,0) as thumbUpCount,",
-            "             IFNULL(ss.collection_count,0) as collectionCount," ,
-            "             IFNULL(ss.thumbdown_count,0) as thumbDownCount," ,
-            "             ui.avatar as avatar" ,
-            "             FROM" ,
+            "             IFNULL(ss.collection_count,0) as collectionCount,",
+            "             IFNULL(ss.thumbdown_count,0) as thumbDownCount,",
+            "             ui.avatar as avatar",
+            "             FROM",
             "             share_content sc",
             "             LEFT JOIN share_statistics ss ON ss.content_id = sc.id",
             "             LEFT JOIN user_info ui on sc.user_id = ui.user_id",
-            "            WHERE" ,
+            "            WHERE",
             "             sc.id=#{shareId}"})
     Share getSingleShare(Integer shareId);
+
+
+    @Insert({"insert into share_comment(share_id,user_id,parent_id,content)VALUES(#{toid},#{userId},#{pid},#{content})"})
+    Integer addComment(@Param("userId") Integer userId,
+                       @Param("toid") Integer toid,
+                       @Param("pid") Integer pid,
+                       @Param("content") String content);
+
+    /**
+     * 功能描述：获取评论列表
+     *
+     * @param shareId
+     * @return
+     * @author 董森
+     * @update:[变更日期YYYY-MM-DD][更改人姓名][变更描述]
+     * @since 2017/6/9
+     */
+    @Select({"select com.id as id,com.user_id As userId,com.share_id as shareId,com.parent_id as parentId,com.like as li, com.create_time as create_time,user_info.avatar as avatar from" ,
+            "(select * from share_comment where share_id = #{shareId}" ,
+            "And delete_flag = 0" ,
+            "UNION" ,
+            "select * from share_comment where share_id = 1 and parent_id in (select id from share_comment where share_id =  #{shareId} and parent_id = 0)" ,
+            "AND delete_flag = 0" ,
+            "order by create_time asc)com" ,
+            "left JOIN user_info on com.user_id = user_info.user_id"})
+    List<Comment> getCommentList(@Param("shareId") Integer shareId);
 
 
 }
