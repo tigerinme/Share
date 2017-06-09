@@ -9,13 +9,37 @@ package com.send.back.domain.share;
  */
 public class Comment {
 
+    /**
+     *  评论自增主键
+     */
     private Integer id;
+    /**
+     *  用户id
+     */
     private Integer userId;
+    /**
+     *  头像地址
+     */
     private String avatar;
+    /**
+     *  分享id
+     */
     private Integer shareId;
+    /**
+     *  父id
+     */
     private Integer parentId;
+    /**
+     *  评论回复内容
+     */
     private String content;
+    /**
+     *  评论时间
+     */
     private String create_time;
+    /**
+     *  点赞
+     */
     private Integer li;
 
     public Integer getId() {
